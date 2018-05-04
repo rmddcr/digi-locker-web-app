@@ -1,7 +1,7 @@
 # Digi Locker code-igniter app
 
 
-One Paragraph of project description goes here
+This is the web application for the digilocker system
 
 ## Getting Started
 
