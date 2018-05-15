@@ -26,7 +26,7 @@ class Main extends CI_Controller
         {
             $data['page_title'] = "Title";
 
-            $this->load->view('template/header',$data);    
+            $this->load->view('template/header',$data);
             $this->load->view('template/footer');
          //   redirect('/Main/login', 'refresh');
         }
@@ -63,5 +63,9 @@ class Main extends CI_Controller
     {
         session_destroy();
         redirect('/Main/login', 'refresh');
+    }
+
+    public  function login(){
+        $this->load->view('login/login');
     }
 }
