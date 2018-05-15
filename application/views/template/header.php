@@ -9,18 +9,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>assets/images/favicon.png">
     <title>Digi Locker</title>
     <!-- Bootstrap Core CSS -->
-    <link href="assets/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
 
-    <link href="assets/css/lib/calendar2/semantic.ui.min.css" rel="stylesheet">
-    <link href="assets/css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
-    <link href="assets/css/lib/owl.carousel.min.css" rel="stylesheet" />
-    <link href="assets/css/lib/owl.theme.default.min.css" rel="stylesheet" />
-    <link href="assets/css/helper.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/lib/calendar2/semantic.ui.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/lib/owl.carousel.min.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/css/lib/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/css/helper.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -31,10 +31,10 @@
 
 <body class="fix-header fix-sidebar">
     <!-- Preloader - style you can find in spinners.css -->
-    <div class="preloader">
+    <!-- <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
 			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
-    </div>
+    </div> -->
     <!-- Main wrapper  -->
     <div id="main-wrapper">
         <!-- header header  -->
@@ -44,7 +44,7 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
-                        <b><img src="assets/images/logo.png" alt="homepage" class="dark-logo" /></b>
+                        <b><img src="<?php echo base_url(); ?>assets/images/logo.png" alt="DigiLocker" class="dark-logo" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <!-- <span><img src="assets/images/logo-text.png1" alt="DigiLocker" class="dark-logo" /></span> -->
@@ -72,7 +72,7 @@
                         
                         <!-- Profile -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/5.jpg" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url(); ?>assets/images/users/5.jpg" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
                                     <li><a href="#"><i class="ti-user"></i> Profile</a></li>
@@ -95,49 +95,49 @@
 
                         <li class="nav-devider"></li>
                         <li class="nav-label">Lockers</li>
-                        <li> <a href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">All Lockers</span></a></li>
+                        <li> <a href="<?php echo base_url(); ?>Locker/" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">All Lockers</span></a></li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">New Lockers</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="index.html">Add one</a></li>
-                                <li><a href="index1.html">Add bulk</a></li>
+                                <li><a href="<?php echo base_url(); ?>Locker/new_locker">Add one</a></li>
+                                <li><a href="<?php echo base_url(); ?>Locker/new_locker_bulck">Add bulk</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Lockers</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="index.html">Remove from list</a></li>
-                                <li><a href="index1.html">Remove from CVS file</a></li>
+                                <li><a href="<?php echo base_url(); ?>Locker/remove_locker_list">Remove from list</a></li>
+                                <li><a href="<?php echo base_url(); ?>Locker/remove_locker_csv">Remove from CVS file</a></li>
                             </ul>
                         </li>
 
 
                         <li class="nav-devider"></li>
                         <li class="nav-label">Employees</li>
-                        <li> <a href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">All Employees</span></a></li>
+                        <li> <a href="<?php echo base_url(); ?>Employee/" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">All Employees</span></a></li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">New Employee</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="index.html">Add one</a></li>
-                                <li><a href="index1.html">Add bulk</a></li>
+                                <li><a href="<?php echo base_url(); ?>Employee/new_employee">Add one</a></li>
+                                <li><a href="<?php echo base_url(); ?>Employee/new_employee_bulck">Add bulk</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Employee</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="index.html">Remove from list</a></li>
-                                <li><a href="index1.html">Remove from CVS file</a></li>
+                                <li><a href="<?php echo base_url(); ?>Employee/remove_employee_list">Remove from list</a></li>
+                                <li><a href="<?php echo base_url(); ?>Employee/remove_employee_csv">Remove from CVS file</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-devider"></li>
                         <li class="nav-label">Users</li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Users</span></a>
+                        <li> <a class="has-arrow  " href="" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Users</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="index.html">List Users</a></li>
-                                <li><a href="index1.html">New User</a></li>
+                                <li><a href="<?php echo base_url(); ?>User/">List Users</a></li>
+                                <li><a href="<?php echo base_url(); ?>User/new_user">New User</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Roles</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="index.html">List Roles</a></li>
-                                <li><a href="index1.html">New Role</a></li>
+                                <li><a href="<?php echo base_url(); ?>Role/">List Roles</a></li>
+                                <li><a href="<?php echo base_url(); ?>Role/new_role">New Role</a></li>
                             </ul>
                         </li>
                     </ul>
