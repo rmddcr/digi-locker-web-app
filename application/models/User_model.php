@@ -1,26 +1,53 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+class User_model extends CI_Model{
+
+    function insert_data($data){
+        $this->db->insert('student_data',$data);
+    }
+
+    function fetch_data(){
 
 
-class User_model extends CI_Model
-{
+        $this->db->order_by("id", "desc");
 
-    public function __construct()
-    {
+        $query = $this->db->get('student_data');
+        return $query;
+    }
+
+
+    function delete_data($id){
+
+
+        $this->db->where('id', $id);
+        $this->db->delete('student_data');
 
     }
 
-    public function set_user_data()
-    {
-        $data = array(
-            'id' => $this->input->post('id'),
-            'name' => $this->input->post('name'),
-            'role_id' => $this->input->post('role_id')
-        );
-        $this->db->insert('user', $data);
+    function fetch_single_data($id){
+
+        $query=$this->db->query("SELECT * FROM student_data WHERE id=$id");
+
+        return $query;
+
     }
+    function update_data($id,$data){
+
+        $this->db->where('id', $id);
+        $this->db->update('student_data', $data);
+
+    }
+    function search_data_model($search_data){
+        $this->db->select('*');
+        $this->db->from('student_data');
+        $this->db->like('index_num', $search_data);
+        $this->db->or_like('firstname', $search_data);
+        $this->db->or_like('lastname', $search_data);
+        $this->db->or_like('phone', $search_data);
+        $query=$this->db->get();
+        return $query;
+    }
+
+
+
 }
-
-
-
-
+?>
