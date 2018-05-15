@@ -24,7 +24,10 @@ class Main extends CI_Controller
         }
         else
         {
-            $this->load->view('template/header');    
+            $data['page_title'] = "Title";
+
+            $this->load->view('template/header',$data);    
+            $this->load->view('template/footer');
          //   redirect('/Main/login', 'refresh');
         }
     }
