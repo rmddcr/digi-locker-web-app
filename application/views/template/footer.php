@@ -47,6 +47,12 @@
 
     <script src="<?php echo base_url(); ?>assets/js/custom.min.js"></script>
 
+<script>
+    console.log(1);
+    
+    //$('#side_bar').first().sidebar('attach events', '.toggle.button');
+    console.log(2);
+</script>
 </body>
 
 </html>
