@@ -165,12 +165,3 @@
             <!-- End Bread crumb -->
             <!-- Container fluid  -->
             <div class="container-fluid">
-                <!-- Start Page Content -->
-                <?php echo validation_errors(); ?>
-
-                <?php $abc=$this->session->userdata('username');
-                echo $abc;
-                echo $this->session->userdata('password');
-
-
-                        ?>
