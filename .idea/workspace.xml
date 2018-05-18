@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52cedef5-3412-4fef-91fa-da2109ad5ed9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/config/sessions/ci_sessionc96j5a3vmd5topir1li8p6ifban9hd70" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/User_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/User_model.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
