@@ -1,53 +1,40 @@
 <?php
 class User_model extends CI_Model{
+    public function register($enc_password){
+        // User data array
+        $data = array(
+            'name' => $this->input->post('name'),
+            'email' => $this->input->post('email'),
+            'username' => $this->input->post('username'),
+            'password' => $enc_password,
+            'zipcode' => $this->input->post('zipcode'),
+            'sms_notify' => $this->input->post('sms_notify'),
 
-    function insert_data($data){
-        $this->db->insert('student_data',$data);
+        );
+        // Insert user
+        return $this->db->insert('Users', $data);
     }
+    // Log user in
+    public function login($username, $password){
+        // Validate
+        $this->db->where('user_name', $username);
+        $this->db->where('password_hash', $password);
+        $result = $this->db->get('user');
+        print_r($result);
+        die();
 
-    function fetch_data(){
+        if($result->num_rows() == 1){
+            $this->session->set_userdata('name',$result->row(0)->name);
+            $this->session->set_userdata('email',$result->row(0)->email);
+            $this->session->set_userdata('privilage_level',$result->row(0)->role_id);
 
-
-        $this->db->order_by("id", "desc");
-
-        $query = $this->db->get('student_data');
-        return $query;
+            return $result->row(0)->id;
+        } else {
+            return false;
+        }
     }
+    // Check username exists
 
-
-    function delete_data($id){
-
-
-        $this->db->where('id', $id);
-        $this->db->delete('student_data');
-
-    }
-
-    function fetch_single_data($id){
-
-        $query=$this->db->query("SELECT * FROM student_data WHERE id=$id");
-
-        return $query;
-
-    }
-    function update_data($id,$data){
-
-        $this->db->where('id', $id);
-        $this->db->update('student_data', $data);
-
-    }
-    function search_data_model($search_data){
-        $this->db->select('*');
-        $this->db->from('student_data');
-        $this->db->like('index_num', $search_data);
-        $this->db->or_like('firstname', $search_data);
-        $this->db->or_like('lastname', $search_data);
-        $this->db->or_like('phone', $search_data);
-        $query=$this->db->get();
-        return $query;
-    }
-
-
+    // Check email exists
 
 }
-?>

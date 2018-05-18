@@ -4,6 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Main extends CI_Controller
 {
 
+
+
+
     public function __construct()
     {
         parent::__construct();
@@ -11,6 +14,8 @@ class Main extends CI_Controller
 
     //desktop page
     public function index()
+
+
     {
         if(isset($_SESSION['user']))
         {
@@ -25,6 +30,16 @@ class Main extends CI_Controller
         else
         {
             $data['page_title'] = "Title";
+            $username = $this->input->post('email');
+            $password = md5($this->input->post('pass'));
+
+            $user_data = array(
+
+                'username' => $username,
+                'password' => $password
+            );
+            $this->session->set_userdata($user_data);
+
 
             $this->load->view('template/header',$data);
             $this->load->view('template/footer');
@@ -32,40 +47,55 @@ class Main extends CI_Controller
         }
     }
 
-    // public function login()
-    // {
-    //     if(isset($_POST['email']) && isset($_POST['password']))
-    //     {
-    //         $this->load->model('User_model');
-    //         $this->load->model('Role_model');
 
-    //         $user  = $this->User_model->get_user_data($_POST['email']);
 
-    //         if($user !== NULL)
-    //         {
-    //             if(hash('sha256', $_POST['password'])==$user['password_hash'])
-    //             {
-    //             	$role_data = $this->Role_model->get_role_acess_data($user['role_id']);
-    //             	$_SESSION['user'] = $user;
-    //             	$_SESSION['access'] = $role_data['access'];
-    //             	$_SESSION['apps'] = $role_data['apps'];
-    //             	redirect('/Main', 'refresh');
-    //             }
-    //         }
-    //         $data['error'] = true;
-    //     }
-    //     if(isset($_POST['clicked'])) $data['error'] = true;
-    //     else $data['error'] = false;
-    //     $this->load->view('Main/login',$data);
-    // }
+    public function login2()
 
-    public function logout()
     {
-        session_destroy();
-        redirect('/Main/login', 'refresh');
+
+
+        $this->form_validation->set_rules('email', 'Username', 'required');
+        $this->form_validation->set_rules('pass', 'Password', 'required');
+        if ($this->form_validation->run() === FALSE) {
+            $privilages = get_privilage_array($this->session->userdata('privilage_level'));
+
+            $this->load->view('login/login');
+
+        } else {
+
+            // Get username
+            $username = $this->input->post('email');
+            // Get and encrypt the password
+            $password = md5($this->input->post('pass'));
+            // Login user
+            $user_id = $this->User_model->login($username, $password);
+            if ($user_id) {
+                // Create session
+                $user_data = array(
+                    'user_id' => $user_id,
+                    'username' => $username,
+                    'logged_in' => true
+                );
+                $this->session->set_userdata($user_data);
+                // Set message
+
+                redirect('Main');
+            } else {
+                // Set message
+
+                redirect('Main/login2');
+            }
+        }
     }
+
 
     public  function login(){
+
+
         $this->load->view('login/login');
+
     }
+
+
 }
+
