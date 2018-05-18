@@ -29,7 +29,7 @@
 </head>
 <body>
 
-<?php echo form_open('Main/login2'); ?>
+<?php echo form_open('login'); ?>
 
 <div class="limiter">
     <div class="container-login100">
@@ -45,7 +45,7 @@
 					</span>
 
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-                    <input class="input100" type="text" name="email">
+                    <input class="input100" type="text" name="email" required>
                     <span class="focus-input100" data-placeholder="Email"></span>
                 </div>
 
@@ -53,7 +53,7 @@
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-                    <input class="input100" type="password" name="pass">
+                    <input class="input100" type="password" name="pass" required>
                     <span class="focus-input100" data-placeholder="Password"></span>
                 </div>
 

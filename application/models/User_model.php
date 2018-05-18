@@ -20,21 +20,15 @@ class User_model extends CI_Model{
         $this->db->where('user_name', $username);
         $this->db->where('password_hash', $password);
         $result = $this->db->get('user');
-        print_r($result);
-        die();
 
         if($result->num_rows() == 1){
-            $this->session->set_userdata('name',$result->row(0)->name);
-            $this->session->set_userdata('email',$result->row(0)->email);
-            $this->session->set_userdata('privilage_level',$result->row(0)->role_id);
+            $user = array('username' => $result->row(0)->user_name, 'privilage_level' => $result->row(0)->role_id);
+            $this->session->set_userdata('user',$user);
 
-            return $result->row(0)->id;
+            return true;
+
         } else {
             return false;
         }
     }
-    // Check username exists
-
-    // Check email exists
-
 }
