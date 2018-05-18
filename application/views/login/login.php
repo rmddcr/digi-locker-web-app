@@ -29,6 +29,8 @@
 </head>
 <body>
 
+<?php echo form_open('Main/login2'); ?>
+
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
@@ -58,7 +60,7 @@
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
                             Login
                         </button>
                     </div>
@@ -68,6 +70,14 @@
 						<span class="txt1">
 							Don’t have an account?
 						</span>
+                    <?php echo validation_errors(); ?>
+
+                    <?php $abc=$this->session->userdata('username');
+                    echo 'amam';
+
+
+
+                    ?>
 
                     <a class="txt2" href="#">
                         Sign Up
@@ -77,9 +87,11 @@
         </div>
     </div>
 </div>
-
+<?php echo form_close(); ?>
 
 <div id="dropDownSelect1"></div>
+
+
 
 <!--===============================================================================================-->
 <script src="<?php echo base_url('assets/login_assets/'); ?>vendor/jquery/jquery-3.2.1.min.js"></script>
