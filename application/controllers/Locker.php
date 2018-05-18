@@ -13,8 +13,8 @@ class Locker extends CI_Controller
     //list all lockers
     public function index()
     {
-        $data['page_title'] = 'Title';
-        $data['data_tables'] = array('table_id');
+        $data['page_title'] = 'Lockers';
+        $data['data_tables'] = array('locker_table');
         if(isset($_GET['filter_results']))
         {
             $data['lockers'] = $this->Locker_model->get_filtered_lockers($_GET['status'], $_GET['locker_no'], $_GET['plant'], $_GET['section']);

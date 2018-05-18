@@ -38,7 +38,7 @@
 
 <div class="card">
     <div class="card-body">
-		<table id="table_id" class="display">
+		<table id="locker_table" class="display">
 		    <thead>
 		        <tr>
 		            <th>Plant</th>
