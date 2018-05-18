@@ -20,8 +20,7 @@ class User_model extends CI_Model{
         $this->db->where('user_name', $username);
         $this->db->where('password_hash', $password);
         $result = $this->db->get('user');
-        print_r($result);
-        die();
+
 
         if($result->num_rows() == 1){
             $this->session->set_userdata('name',$result->row(0)->name);
