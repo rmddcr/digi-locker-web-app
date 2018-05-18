@@ -7,15 +7,27 @@ class Locker extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Locker_model');
     }
 
     //list all lockers
     public function index()
     {
         $data['page_title'] = 'Title';
+        $data['data_tables'] = array('table_id');
+        if(isset($_GET['filter_results']))
+        {
+            $data['lockers'] = $this->Locker_model->get_filtered_lockers($_GET['status'], $_GET['locker_no'], $_GET['plant'], $_GET['section']);
+            $data['filters'] = $_GET;
+
+        } else 
+        {
+            $data['lockers'] = $this->Locker_model->get_all_lockers();
+        }
+        
         $this->load->view('template/header',$data);
         $this->load->view('locker/all_lockers',$data);
-        $this->load->view('template/footer');
+        $this->load->view('template/footer',$data);
     }
 
     public function view($locker_id)
