@@ -21,6 +21,7 @@ class User_model extends CI_Model{
         $this->db->where('password_hash', $password);
         $result = $this->db->get('user');
 
+
         if($result->num_rows() == 1){
             $user = array('username' => $result->row(0)->user_name, 'privilage_level' => $result->row(0)->role_id);
             $this->session->set_userdata('user',$user);
