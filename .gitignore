@@ -20,3 +20,4 @@ application/logs/*
 
 .idea/workspace.xml
 .DS_Store
+.idea/*
