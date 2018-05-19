@@ -44,5 +44,26 @@ class Employee_model extends CI_Model{
         return $query->result();
     }
 
+    public function add_employee($epf_no, $name, $team, $shift_group, $plant, $section){
+
+
+        $data = array(
+            'epf_no' => $epf_no,
+            'name' => $name,
+            'team' => $team,
+            'shift_group' => $shift_group,
+            'plant' => $plant,
+            'section' => $section
+
+
+        );
+        // Insert user
+        return $this->db->insert('employee', $data);
+
+
+    }
+
+
+
 }
 ?>
