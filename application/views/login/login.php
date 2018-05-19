@@ -66,7 +66,7 @@
                     </div>
                 </div>
 
-                <div class="text-center p-t-60">
+                <div class="text-center p-t-70">
 						<span class="txt1">
 							Don’t have an account?
 						</span>
