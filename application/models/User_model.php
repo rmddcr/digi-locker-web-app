@@ -6,9 +6,7 @@ class User_model extends CI_Model{
             'name' => $this->input->post('name'),
             'email' => $this->input->post('email'),
             'username' => $this->input->post('username'),
-            'password' => $enc_password,
-            'zipcode' => $this->input->post('zipcode'),
-            'sms_notify' => $this->input->post('sms_notify'),
+
 
         );
         // Insert user
