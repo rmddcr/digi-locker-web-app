@@ -29,7 +29,7 @@
 </head>
 <body>
 
-<?php echo form_open('login'); ?>
+<?php echo form_open('signup'); ?>
 
 <div class="limiter">
     <div class="container-login100">
@@ -51,28 +51,53 @@
 
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
 						<span class="btn-show-pass">
-							<i class="zmdi zmdi-eye"></i>
+							<i id='message1' class="zmdi zmdi-eye"></i>
 						</span>
-                    <input class="input100" type="password" name="pass" required>
+                    <input class="input100" type="password" id="password" name="password" onkeyup='check()' required>
                     <span class="focus-input100" data-placeholder="Password"></span>
                 </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Enter password">
+						<span class="btn-show-pass">
+<!--                            <span id='message' ></span>-->
+							<i id='message2'class="zmdi zmdi-eye"></i>
+
+						</span>
+                    <input class="input100" type="password" name="confirm_password" id="confirm_password" onkeyup='check()'; required>
+                    <span class="focus-input100" data-placeholder="Confirm Password "></span>
+
+                </div>
+
 
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
                         <button type="submit" class="login100-form-btn">
-                            Login
+                            signup
                         </button>
                     </div>
                 </div>
+                <script>
+                    var check = function() {
+                        if (document.getElementById('password').value ==
+                            document.getElementById('confirm_password').value) {
+                            document.getElementById('message1').style.color = 'green';
+                            document.getElementById('message2').style.color = 'green';
+                          //  document.getElementById('message').innerHTML = '&#11044;';
+                        } else {
+                            document.getElementById('message').style.color = 'red';
+                          //  document.getElementById('message').innerHTML = '&#11044;';
+                        }
+                    }
+                </script>
 
                 <div class="text-center p-t-70">
 						<span class="txt1">
-							Don’t have an account?
+							Already have a  account?
 						</span>
 
-                    <a class="txt2" href="<?php echo base_url('signup'); ?>">
-                        Sign Up
+                    <a class="txt2" href="<?php echo base_url('login'); ?>">
+                        Login
                     </a>
                 </div>
             </form>
