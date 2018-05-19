@@ -40,7 +40,7 @@ class Employee extends CI_Controller
 
     public function new_employee()
     {
-        $data['page_title'] = 'Title';
+        $data['page_title'] = 'Add Employee';
         $this->load->view('template/header',$data);
         $this->load->view('employee/new_employee_one',$data);
         $this->load->view('template/footer');

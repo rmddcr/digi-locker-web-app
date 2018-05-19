@@ -32,7 +32,7 @@ class Locker extends CI_Controller
 
     public function view($locker_id)
     {
-        $data['page_title'] = 'Title';
+        $data['page_title'] = 'Locker Id';
         $this->load->view('template/header',$data);
         $this->load->view('locker/view_locker',$data);
         $this->load->view('template/footer');
