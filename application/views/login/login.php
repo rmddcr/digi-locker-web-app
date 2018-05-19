@@ -71,7 +71,7 @@
 							Don’t have an account?
 						</span>
 
-                    <a class="txt2" href="#">
+                    <a class="txt2" href="<?php echo base_url('signup'); ?>">
                         Sign Up
                     </a>
                 </div>

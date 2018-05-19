@@ -95,7 +95,7 @@
 							Already have a  account?
 						</span>
 
-                    <a class="txt2" href="#">
+                    <a class="txt2" href="<?php echo base_url('login'); ?>">
                         Login
                     </a>
                 </div>

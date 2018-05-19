@@ -65,13 +65,13 @@ class Main extends CI_Controller
         redirect('login');
     }
 
-    public  function signup()
+    public  function signup()// better if we add some confirm massage
     {
         $this->form_validation->set_rules('email', 'Username', 'required');//$this->form_validation->set_rules('email','Email','trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required');
         $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[password]');
-       // print_r($this->form_validation->run());
-        $this->load->view('template/debug',array('data' => $this->form_validation->run(),'name'=> md5($this->input->post('pass'))));
+
+      //  $this->load->view('template/debug',array('data' => $this->form_validation->run(),'name'=> md5($this->input->post('pass'))));
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('login/signup');
         } else {
@@ -82,7 +82,7 @@ class Main extends CI_Controller
             $password = md5($this->input->post('password'));
             // Login user
             $loggin_passed = $this->User_model->register($username, $password);
-          //  print_r($loggin_passed);
+
 
             if ($loggin_passed) {
                 redirect('login');
