@@ -40,11 +40,30 @@ class Employee extends CI_Controller
 
     public function new_employee()
     {
-        $data['page_title'] = 'Title';
-        $this->load->view('template/header',$data);
-        $this->load->view('employee/new_employee_one',$data);
-        $this->load->view('template/footer');
-    }
+        $this->form_validation->set_rules('epf_no', 'Employee Number', 'required');
+        $this->form_validation->set_rules('name', 'Employee Name', 'required');
+
+
+        if ($this->form_validation->run() === FALSE) {
+            $data['page_title'] = $this->form_validation->run()===FALSE;
+            $this->load->view('template/header',$data);
+            $this->load->view('employee/new_employee_one');
+            $this->load->view('template/footer');
+
+        }else{
+            $this->Employee_model->add_employee($_GET['epf_no'], $_GET['name'], $_GET['team'], $_GET['shift_group'], $_GET['plant'], $_GET['section']);
+
+            $is_success=
+
+
+                redirect('login');
+            }
+        }
+
+
+
+
+
 
     public function new_employee_bulck()
     {
