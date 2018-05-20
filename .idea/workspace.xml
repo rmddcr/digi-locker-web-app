@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52cedef5-3412-4fef-91fa-da2109ad5ed9" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/locker/all_lockers.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/locker/all_lockers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/template/debug.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/template/debug.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/User_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/User_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/user/all_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/user/all_users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/user/new_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/user/new_user.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,77 +21,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/Main.php">
+      <file leaf-file-name="all_users.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/user/all_users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="42" column="54" lean-forward="true" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
+            <state relative-caret-position="195">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".htaccess" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.htaccess">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+            <state relative-caret-position="495">
+              <caret line="33" column="67" selection-end-line="40" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Employee_model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/models/Employee_model.php">
+      <file leaf-file-name="new_user.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/user/new_user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="20" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User_model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/models/User_model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="12" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new_locker_one.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/locker/new_locker_one.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="54" column="6" selection-start-line="54" selection-start-column="6" selection-end-line="54" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/template/header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="76" column="225" selection-start-line="76" selection-start-column="225" selection-end-line="76" selection-end-column="244" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view_employee.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/employee/view_employee.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="all_lockers.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/locker/all_lockers.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="58" column="112" lean-forward="true" selection-start-line="58" selection-start-column="112" selection-end-line="58" selection-end-column="112" />
+            <state relative-caret-position="135">
+              <caret line="9" column="95" selection-start-line="9" selection-start-column="95" selection-end-line="9" selection-end-column="95" />
             </state>
           </provider>
         </entry>
@@ -98,19 +51,24 @@
       <file leaf-file-name="Employee.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/Employee.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="559">
-              <caret line="42" selection-start-line="42" selection-end-line="43" selection-end-column="79" />
+            <state relative-caret-position="360">
+              <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new_employee_one.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/employee/new_employee_one.php">
+      <file leaf-file-name="User_model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/User_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="37" lean-forward="true" selection-end-line="54" selection-end-column="6" />
+            <state relative-caret-position="150">
+              <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view_user.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/user/view_user.php">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -153,7 +111,6 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/application/views/login/register.php" />
         <option value="$PROJECT_DIR$/application/config/routes.php" />
-        <option value="$PROJECT_DIR$/application/models/User_model.php" />
         <option value="$PROJECT_DIR$/application/controllers/Main.php" />
         <option value="$PROJECT_DIR$/application/views/login/login.php" />
         <option value="$PROJECT_DIR$/application/views/login/signup.php" />
@@ -167,6 +124,10 @@
         <option value="$PROJECT_DIR$/application/views/employee/view_employee.php" />
         <option value="$PROJECT_DIR$/application/views/locker/all_lockers.php" />
         <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/application/models/User_model.php" />
+        <option value="$PROJECT_DIR$/application/views/user/all_users.php" />
+        <option value="$PROJECT_DIR$/application/controllers/User.php" />
+        <option value="$PROJECT_DIR$/application/views/user/new_user.php" />
       </list>
     </option>
   </component>
@@ -214,9 +175,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="22" />
-    <option name="width" value="838" />
-    <option name="height" value="1024" />
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -229,6 +189,36 @@
             <path>
               <item name="digi-locker-web-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="digi-locker-web-app" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="digi-locker-web-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="digi-locker-web-app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="digi-locker-web-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="digi-locker-web-app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="digi-locker-web-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="digi-locker-web-app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="models" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="digi-locker-web-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="digi-locker-web-app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="digi-locker-web-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="digi-locker-web-app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="digi-locker-web-app" type="b2602c69:ProjectViewProjectNode" />
@@ -299,29 +289,30 @@
       <workItem from="1526552994367" duration="10497000" />
       <workItem from="1526634272653" duration="11453000" />
       <workItem from="1526747324599" duration="14000" />
-      <workItem from="1526747375204" duration="8769000" />
+      <workItem from="1526747375204" duration="9087000" />
+      <workItem from="1526814875798" duration="2951000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47643000" />
+    <option name="totallyTimeSpent" value="50912000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.175" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.175" />
       <window_info anchor="bottom" id="TODO" order="4" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -338,13 +329,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/controllers/Login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="53" column="62" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/template/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
@@ -543,9 +527,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/User.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/template/debug.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -574,62 +555,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Employee_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/User_model.php">
+    <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="12" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/employee/new_employee_one.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="37" lean-forward="true" selection-end-line="54" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Employee.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="42" selection-start-line="42" selection-end-line="43" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/template/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="76" column="225" selection-start-line="76" selection-start-column="225" selection-end-line="76" selection-end-column="244" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/locker/new_locker_one.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="54" column="6" selection-start-line="54" selection-start-column="6" selection-end-line="54" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/employee/view_employee.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/locker/all_lockers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="58" column="112" lean-forward="true" selection-start-line="58" selection-start-column="112" selection-end-line="58" selection-end-column="112" />
+          <caret line="4" column="37" lean-forward="true" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -640,10 +569,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.htaccess">
+    <entry file="file://$PROJECT_DIR$/application/models/Employee_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+        <state relative-caret-position="15">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/locker/new_locker_one.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="54" column="6" selection-start-line="54" selection-start-column="6" selection-end-line="54" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/template/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="76" column="225" selection-start-line="76" selection-start-column="225" selection-end-line="76" selection-end-column="244" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/employee/view_employee.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/locker/all_lockers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="58" column="112" lean-forward="true" selection-start-line="58" selection-start-column="112" selection-end-line="58" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/employee/new_employee_one.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="37" lean-forward="true" selection-end-line="54" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/user/view_user.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Employee.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/User_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="67" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/user/all_users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/user/new_user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="95" selection-start-line="9" selection-start-column="95" selection-end-line="9" selection-end-column="95" />
         </state>
       </provider>
     </entry>
