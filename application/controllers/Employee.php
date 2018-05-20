@@ -63,11 +63,7 @@ class Employee extends CI_Controller
             }
         }
 
-
-
-
-
-
+      // add new employee as bulks
     public function new_employee_bulck()
     {
         $data['page_title'] = 'Title';
@@ -75,7 +71,7 @@ class Employee extends CI_Controller
         $this->load->view('employee/new_employee_bulck',$data);
         $this->load->view('template/footer');
     }
-
+    //remove employee from a list
     public function remove_employee_list()
     {
         $data['page_title'] = 'Title';
@@ -83,7 +79,7 @@ class Employee extends CI_Controller
         $this->load->view('employee/remove_employee_list',$data);
         $this->load->view('template/footer');
     }
-
+    //remive employee as a list
     public function remove_employee_csv()
     {
         $data['page_title'] = 'Title';
