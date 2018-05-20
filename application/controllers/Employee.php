@@ -33,6 +33,7 @@ class Employee extends CI_Controller
     public function view($employee_id)
     {
         $data['page_title'] = 'Title';
+        $data['data_tables'] = array('lockers_histroy_table','lockers_current_table');
         $data['result_array']=$this->Employee_model->get_specified_employee($employee_id);
         $this->load->view('template/header',$data);
         $this->load->view('employee/view_employee',$data);

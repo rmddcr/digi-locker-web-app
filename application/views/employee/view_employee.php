@@ -49,3 +49,70 @@
 	</div>
 	
 </div>
+
+
+<div class="card">
+	<div class="card-title">
+        <h4>Lockers Assigned to Employee</h4>
+    </div>
+	<div class="card-body"> 
+		<table id="lockers_current_table" class="display">
+		    <thead>
+		        <tr>
+		            <th>EPF no</th>
+		            <th>Name</th>
+		            <th>Plant</th>
+		            <th>Section</th>
+		            <th>Team</th>
+		            <th>Shift Group</th>
+		            <th></th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+		        	<td>EPF no</td>
+		            <td>Name</td>
+		            <td>Plant</td>
+		            <td>Section</td>
+		            <td>Team</td>
+		            <td>Shift Group</td>
+		            <td>Button to view</td>
+		        </tr>
+		    </tbody>
+		</table>
+	</div>
+	
+</div>
+
+<div class="card">
+	<div class="card-title">
+        <h4>Lockers Assigned Before to Employee</h4>
+    </div>
+	<div class="card-body"> 
+		<table id="lockers_histroy_table" class="display">
+		    <thead>
+		        <tr>
+		            <th>EPF no</th>
+		            <th>Name</th>
+		            <th>Plant</th>
+		            <th>Section</th>
+		            <th>Team</th>
+		            <th>Shift Group</th>
+		            <th></th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+		        	<td>EPF no</td>
+		            <td>Name</td>
+		            <td>Plant</td>
+		            <td>Section</td>
+		            <td>Team</td>
+		            <td>Shift Group</td>
+		            <td>Button to view</td>
+		        </tr>
+		    </tbody>
+		</table>
+	</div>
+	
+</div>
