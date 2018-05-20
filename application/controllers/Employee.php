@@ -30,6 +30,8 @@ class Employee extends CI_Controller
         $this->load->view('template/footer',$data);
     }
 
+
+    //view employee details
     public function view($employee_id)
     {
         $data['page_title'] = 'Title';
@@ -38,7 +40,7 @@ class Employee extends CI_Controller
         $this->load->view('employee/view_employee',$data);
         $this->load->view('template/footer');
     }
-
+    //add new employee to the system
     public function new_employee()
     {
         $this->form_validation->set_rules('epf_no', 'Employee Number', 'required');

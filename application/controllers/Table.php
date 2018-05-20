@@ -93,6 +93,7 @@ class Table extends CI_Controller {
 		redirect(base_url().'main/Table/updated');
 	}
 
+
 	public function search(){
 		$this->load->model('User_model');
 		
