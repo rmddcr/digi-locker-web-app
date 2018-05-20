@@ -44,6 +44,8 @@ class Employee_model extends CI_Model{
         return $query->result();
     }
 
+
+    // simple insert function ti add data to db
     public function add_employee($epf_no, $name, $team, $shift_group, $plant, $section){
 
 
