@@ -56,7 +56,7 @@
 		        		echo "<td>".$locker->section."</td>";
 		        		echo "<td>".$locker->locker_no."</td>";
 		        		echo "<td>".$locker->status."</td>";
-		        		echo '<td> <a type="button" href="'.base_url().'Locker/view/'.$locker->id.'" class="btn "> View </a> </td>';
+		        		echo '<td> <a type="button" href="'.base_url().'Locker/view/'.$locker->id.'" class="btn btn-block btn-info"> View </a> </td>';
 		        	echo "</tr>";
 		        }
 		        ?>
