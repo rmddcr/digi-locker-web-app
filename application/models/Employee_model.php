@@ -74,8 +74,30 @@ class Employee_model extends CI_Model{
         return $query->result_array();
 
     }
+    /**
+    GET 
+        EMPLOYEE DETAILS
+        EMPLOYEE CURRENT LOCKER DETAILS
+        EMPLOYEE LOCKER HOSTORY DETAILS
+    USING SEPERATE FUNCTIONS 
+    **/
+    
+    public function get_employee_by_id($employee_id)
+    {
+        $query = 'SELECT * From employee WHERE employee.epf_no = "'.addslashes($employee_id).'"';
+        $query = $this->db->query($query);
+        return $query->result();
+    }
 
+    public function get_employee_current_locker()
+    {
 
+    }
 
+    public function get_employee_locker_history()
+    {
+
+    }
 }
+
 ?>

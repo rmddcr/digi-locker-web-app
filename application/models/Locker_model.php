@@ -33,6 +33,13 @@ class Locker_model extends CI_Model{
         $query = $this->db->query($query);
         return $query->result();
     }
+
+    function get_locker_owner($locker_id)
+    {
+        $query = 'SELECT * FROM employee as e JOIN employee_has_locker as ehl ON e.epf_no = ehl.employee_epf_no WHERE ehl.locker_id = '.$locker_id;
+        $query = $this->db->query($query);
+        return $query->result();
+    }
 }
 
 ?>

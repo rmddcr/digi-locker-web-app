@@ -4,41 +4,24 @@
             <form method="get" action="<?php echo base_url(); ?>Employee/new_employee">
 
                 <div class="form-group row">
-                    <label class="control-label text-right col-sm-2">EPF Number</label>
-                    <input class="form-control input-default col-sm-10" placeholder="EPF number"  name="epf_no" type="number">
-                </div>
-                <div class="form-group row">
-                    <label class="control-label text-right col-sm-2">Employee Name</label>
-                    <input class="form-control input-default col-sm-10" placeholder="Employee name"  name="name" type="text">
+                    <label class="control-label text-right col-sm-2">Locker number</label>
+                    <input class="form-control input-default col-sm-10" placeholder="Locker number"  name="epf_no" type="number">
                 </div>
 
 
+
                 <div class="form-group row">
-                    <label class="control-label text-right col-sm-2">Team</label>
-                    <select class="form-control input-default col-sm-10" name="team" type="text">
-                        <option selected>Not assigned yet</option>
-                        <option>Team A</option>
-                        <option>Team B</option>
-                        <option>Team C</option>
-                        <option>Team D</option>
+                    <label class="control-label text-right col-sm-2">Plant</label>
+                    <select class="form-control input-default col-sm-10 selectize" name="shift_group" placeholder="Plant" type="text">
+                        <option>Plant 1</option>
+                        <option>Plant 2</option>
+                        <option>Plant 3</option>
                     </select>
                 </div>
 
                 <div class="form-group row">
-                    <label class="control-label text-right col-sm-2">Shift</label>
-                    <select class="form-control input-default col-sm-10" name="shift_group" type="text">
-                        <option selected>Not assigned yet</option>
-                        <option>Shift A</option>
-                        <option>Shift B</option>
-                        <option>Shift C</option>
-                        <option>Shift D</option>
-                    </select>
-                </div>
-
-                <div class="form-group row">
-                    <label class="control-label text-right col-sm-2">Section ID</label>
-                    <select class="form-control input-default col-sm-10" name="section_id" type="text">
-                        <option selected>Not assigned yet</option>
+                    <label class="control-label text-right col-sm-2">Section</label>
+                    <select class="form-control input-default col-sm-10 selectize" placeholder="Section" name="section_id" type="text">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -47,7 +30,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" name="filter_results" class="btn btn-success waves-effect waves-light col-sm-4">Add User</button>
+                    <button type="submit" name="filter_results" class="btn btn-success waves-effect waves-light col-sm-4">Add Locker</button>
                 </div>
             </form>
         </div>
