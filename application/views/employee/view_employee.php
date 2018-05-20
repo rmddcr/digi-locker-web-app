@@ -1,3 +1,5 @@
+<?php var_dump($result_array) ;?>
+
 <div class="card">
 	<div class="card-title">
         <h4>Employee name</h4>

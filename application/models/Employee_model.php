@@ -44,6 +44,8 @@ class Employee_model extends CI_Model{
         return $query->result();
     }
 
+
+    // simple insert function ti add data to db
     public function add_employee($epf_no, $name, $team, $shift_group, $plant, $section){
 
 
@@ -62,14 +64,15 @@ class Employee_model extends CI_Model{
 
 
     }
+
     public function get_specified_employee($user_id){
 
 
         // $query = $this->db->get('user');
-        $this->db->select('employee.employee , employee.name , employee.team , employee.shift_group ,employee.section_id ,locker_has_employee.locker_locker_no' );
+        $this->db->select('employee.epf_no , employee.name , employee.team , employee.shift_group ,employee.section_id ,locker_has_employee.locker_locker_no' );
         $this->db->from('employee');
-        $this->db->join('locker_has_employee' , 'employee.epf_no = locker_has_employee.employee_epf_no');
-        $this->db->where('employee.employee', $user_id);
+        $this->db->join('locker_has_employee' , 'employee.epf_no = locker_has_employee.employee_epf_no', 'left');
+        $this->db->where('employee.epf_no', $user_id);
         $query = $this->db->get();
         return $query->result_array();
 
