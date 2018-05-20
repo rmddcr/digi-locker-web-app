@@ -12,6 +12,13 @@ class Main extends CI_Controller
         parent::__construct();
     }
 
+    public function debug()
+    {   
+        $data['page_title'] = "Title";
+        $this->load->view('template/header',$data);
+        $this->load->view('template/footer');
+    }
+
     //desktop page
     public function index()
 
