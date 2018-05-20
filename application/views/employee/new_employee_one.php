@@ -15,8 +15,7 @@
 
                 <div class="form-group row">
                 <label class="control-label text-right col-sm-2">Team</label>
-                <select class="form-control input-default col-sm-10" name="team" type="text">
-                    <option selected>Not assigned yet</option>
+                <select class="form-control input-default col-sm-10 selectize" placeholder="Team" name="team" type="text">
                     <option>Team A</option>
                     <option>Team B</option>
                     <option>Team C</option>
@@ -26,8 +25,7 @@
 
                 <div class="form-group row">
                 <label class="control-label text-right col-sm-2">Shift</label>
-                <select class="form-control input-default col-sm-10" name="shift_group" type="text">
-                    <option selected>Not assigned yet</option>
+                <select class="form-control input-default col-sm-10 selectize" name="shift_group" placeholder="Shift" type="text">
                     <option>Shift A</option>
                     <option>Shift B</option>
                     <option>Shift C</option>
@@ -36,9 +34,8 @@
                 </div>
 
                 <div class="form-group row">
-                <label class="control-label text-right col-sm-2">Section ID</label>
-                <select class="form-control input-default col-sm-10" name="section_id" type="text">
-                    <option selected>Not assigned yet</option>
+                <label class="control-label text-right col-sm-2">Section</label>
+                <select class="form-control input-default col-sm-10 selectize" name="section_id" placeholder="Section" type="text">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>

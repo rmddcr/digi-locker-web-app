@@ -16,6 +16,7 @@
 	<link href="<?php echo base_url(); ?>assets/css/lib/owl.carousel.min.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>assets/css/lib/owl.theme.default.min.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/selectize.bootstrap3.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>assets/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -137,7 +138,7 @@
                                 <li><a href="<?php echo base_url(); ?>Role/new_role">New Role</a></li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

@@ -21,6 +21,8 @@
 
     <script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script>
 
+    <script src="<?php echo base_url(); ?>assets/js/selectize.min.js"></script>
+
     <!-- <script src="<?php echo base_url(); ?>assets/js/lib/datamap/d3.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/lib/datamap/topojson.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/lib/datamap/datamaps.world.min.js"></script>
@@ -40,7 +42,11 @@
     <script src="<?php echo base_url(); ?>assets/js/custom.min.js"></script>
     
     <script>
+        $('.selectize').selectize({
+            create: true
+        });
         <?php
+
             if(isset($data_tables))
             {
                 echo "$(document).ready( function () {";
