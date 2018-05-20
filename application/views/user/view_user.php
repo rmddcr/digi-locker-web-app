@@ -1,1 +1,1 @@
-view user
+<?php var_dump($result_array);

@@ -1,6 +1,20 @@
 <?php
 class User_model extends CI_Model{
 
+
+    public function get_specified_user($user_id){
+
+
+        // $query = $this->db->get('user');
+        $this->db->select('user.user_name ,role.role_name');
+        $this->db->from('user');
+        $this->db->join('role' , 'user.role_id = role.id');
+        $this->db->where('user.user_name', $user_id);
+        $query = $this->db->get();
+        return $query->result_array();
+
+    }
+
     public function get_all_users(){
 
 
