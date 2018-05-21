@@ -37,9 +37,9 @@
 		<table id="locker_table" class="display">
 		    <thead>
 		        <tr>
-		            <th>Section</th>
 		            <th>Locker number</th>
-		            <th>Status</th>
+		            <th>Section</th>
+                    <th>Status</th>
 		            <th></th>
 		        </tr>
 		    </thead>
@@ -49,7 +49,12 @@
 		        	echo "<tr>";
 		        		echo "<td>".$locker->locker_no."</td>";
 		        		echo "<td>".$locker->section."</td>";
-                        echo "<td>".$locker->status."</td>";
+                        echo "<td>";
+                        if($locker->status=='free') echo '<span class="label label-rouded label-success"> Free </span>';
+                        else if($locker->status=='in_use') echo '<span class="label label-rouded label-info"> In Use </span>';
+                        else if($locker->status=='broken') echo '<span class="label label-rouded label-danger"> Broken </span>';
+                        else if($locker->status=='locked') echo '<span class="label label-rouded label-default"> Locked </span>';
+                        echo "</td>";
 		        		echo '<td> <a type="button" href="'.base_url().'Locker/view/'.$locker->locker_no.'" class="btn btn-block btn-info"> View </a> </td>';
 		        	echo "</tr>";
 		        }

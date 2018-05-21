@@ -39,10 +39,22 @@ class Locker extends CI_Controller
         $data['owner'] = $this->Locker_model->get_locker_owner($locker_id);
         $data['owner_history'] = $this->Locker_model->get_locker_owner_history($locker_id);
         $data['page_title'] = 'Locker : '.$locker_id.' - '.$data['locker']->section;
-        $data['debug'] = $_POST;
+        $data['data_tables'] = array('owner_history_table');
+        //$data['debug'] = $data['owner_history'];
         $this->load->view('template/header',$data);
         $this->load->view('locker/view_locker',$data);
-        $this->load->view('template/footer');
+        $this->load->view('template/footer',$data);
+    }
+
+    public function assign($locker_id)
+    {
+        $data['locker'] = $this->Locker_model->get_locker_by_id($locker_id);
+        $data['page_title'] = 'Assign employee to locker : '.$locker_id.' - '.$data['locker']->section;
+        $data['data_tables'] = array('employee_table');
+        $data['employees'] = $this->Employee_model->get_filtered_employees("", "", "", "", $data['locker']->section);
+        $this->load->view('template/header',$data);
+        $this->load->view('locker/set_owner',$data);
+        $this->load->view('template/footer',$data);
     }
 
     public function new_locker()

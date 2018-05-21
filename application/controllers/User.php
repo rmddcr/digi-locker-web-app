@@ -21,6 +21,7 @@ class User extends CI_Controller
 
     public function view($user_id)
     {
+        $user_id = str_replace('%40','@',$user_id);
         $data['page_title'] = 'View user info';
         $data['result_array'] = $this->User_model->get_specified_user($user_id);
 
