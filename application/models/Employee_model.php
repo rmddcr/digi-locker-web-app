@@ -64,9 +64,9 @@ class Employee_model extends CI_Model{
 
 
         // $query = $this->db->get('user');
-        $this->db->select('employee.epf_no , employee.name , employee.team , employee.shift_group ,employee.section_id ,locker_has_employee.locker_locker_no' );
+        $this->db->select('employee.epf_no , employee.name , employee.team , employee.shift_group ,employee.section_id ,employee_has_locker.locker_locker_no' );
         $this->db->from('employee');
-        $this->db->join('locker_has_employee' , 'employee.epf_no = locker_has_employee.employee_epf_no', 'left');
+        $this->db->join('employee_has_locker' , 'employee.epf_no = employee_has_locker.employee_epf_no', 'left');
         $this->db->where('employee.epf_no', $user_id);
         $query = $this->db->get();
         return $query->result_array();

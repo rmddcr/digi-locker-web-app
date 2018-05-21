@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52cedef5-3412-4fef-91fa-da2109ad5ed9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Locker.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Locker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/locker/new_locker_one.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/locker/new_locker_one.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Employee_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Employee_model.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,7 +28,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Locker.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Locker.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/Locker.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="476">
@@ -62,6 +60,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Employee_model.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/models/Employee_model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
             </state>
           </provider>
         </entry>
@@ -115,7 +122,6 @@
         <option value="$PROJECT_DIR$/application/views/user/all_users.php" />
         <option value="$PROJECT_DIR$/application/views/user/view_user.php" />
         <option value="$PROJECT_DIR$/application/controllers/User.php" />
-        <option value="$PROJECT_DIR$/application/models/Employee_model.php" />
         <option value="$PROJECT_DIR$/application/controllers/Table.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/application/controllers/Employee.php" />
@@ -125,6 +131,7 @@
         <option value="$PROJECT_DIR$/application/models/Locker_model.php" />
         <option value="$PROJECT_DIR$/application/views/locker/new_locker_one.php" />
         <option value="$PROJECT_DIR$/application/controllers/Locker.php" />
+        <option value="$PROJECT_DIR$/application/models/Employee_model.php" />
       </list>
     </option>
   </component>
@@ -315,12 +322,12 @@
       <workItem from="1526747324599" duration="14000" />
       <workItem from="1526747375204" duration="9087000" />
       <workItem from="1526814875798" duration="5472000" />
-      <workItem from="1526899834908" duration="3104000" />
+      <workItem from="1526899834908" duration="3311000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60199000" />
+    <option name="totallyTimeSpent" value="60406000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -539,13 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Employee_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="32" lean-forward="true" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/Login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -625,13 +625,6 @@
     <entry file="file://$PROJECT_DIR$/application/views/employee/remove_employee_list.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Locker_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="801">
-          <caret line="61" column="40" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/login/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="872">
@@ -657,6 +650,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="74" column="59" selection-start-line="74" selection-start-column="59" selection-end-line="74" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Locker_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="801">
+          <caret line="61" column="40" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Employee_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
         </state>
       </provider>
     </entry>
