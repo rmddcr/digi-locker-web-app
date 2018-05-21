@@ -1,4 +1,4 @@
-<?php var_dump($result_array) ;?>
+<?php //var_dump($result_array) ;?>
 
 <div class="card">
 	<div class="card-title">
