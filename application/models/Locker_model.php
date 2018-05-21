@@ -48,6 +48,19 @@ class Locker_model extends CI_Model{
         $query = $this->db->query($query);
         return $query->row();
     }
+
+    public function add_locker($locker_no, $plant, $section_id){
+        // User data array
+        $data = array(
+            'locker_no' => $locker_no,
+            'section_id' => $section_id,
+            'status' => 'free'
+
+
+        );
+        // Insert user
+        return $this->db->insert('locker', $data);
+    }
 }
 
 ?>
