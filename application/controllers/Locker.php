@@ -34,8 +34,12 @@ class Locker extends CI_Controller
 
     public function view($locker_id)
     {
-        $data['page_title'] = 'Locker Id';
         
+        $data['locker'] = $this->Locker_model->get_locker_by_id($locker_id);
+        $data['owner'] = $this->Locker_model->get_locker_owner($locker_id);
+        $data['owner_history'] = $this->Locker_model->get_locker_owner_history($locker_id);
+        $data['page_title'] = 'Locker : '.$locker_id.' - '.$data['locker']->section;
+        $data['debug'] = $_POST;
         $this->load->view('template/header',$data);
         $this->load->view('locker/view_locker',$data);
         $this->load->view('template/footer');
