@@ -22,10 +22,6 @@
                     <input class="form-control input-default col-sm-10" placeholder="Shift Group" <?php if(isset($filters) && $filters['shift_group']!="") echo 'value="'.$filters['shift_group'].'"'; ?> name="shift_group" type="text">
                 </div>
                 <div class="form-group row">
-                    <label class="control-label text-right col-sm-2">Plant</label>
-                    <input class="form-control input-default col-sm-10" placeholder="Plant name" <?php if(isset($filters) && $filters['plant']!="") echo 'value="'.$filters['plant'].'"'; ?> name="plant" type="text">
-                </div>
-                <div class="form-group row">
                     <label class="control-label text-right col-sm-2">Section</label>
                     <input class="form-control input-default col-sm-10" placeholder="Section name" <?php if(isset($filters) && $filters['section']!="") echo 'value="'.$filters['section'].'"'; ?> name="section" type="text">
                 </div>
@@ -45,7 +41,6 @@
 		        <tr>
 		            <th>EPF no</th>
 		            <th>Name</th>
-		            <th>Plant</th>
 		            <th>Section</th>
 		            <th>Team</th>
 		            <th>Shift Group</th>
@@ -58,7 +53,6 @@
 		        	echo "<tr>";
 		        		echo "<td>".$employee->epf_no."</td>";
 		        		echo "<td>".$employee->name."</td>";
-		        		echo "<td>".$employee->plant."</td>";
 		        		echo "<td>".$employee->section."</td>";
 		        		echo "<td>".$employee->team."</td>";
 		        		echo "<td>".$employee->shift_group."</td>";

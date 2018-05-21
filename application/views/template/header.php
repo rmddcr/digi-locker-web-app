@@ -148,17 +148,35 @@
         <!-- End Left Sidebar  -->
         <!-- Page wrapper  -->
         <div class="page-wrapper">
-            <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary"><?php echo $page_title; ?></h3> </div>
-                <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
+                    <h3 class="text-primary"><?php echo $page_title; ?></h3> 
                 </div>
             </div>
-            <!-- End Bread crumb -->
+
             <!-- Container fluid  -->
             <div class="container-fluid">
+                <!-- Messages -->
+                <?php
+                    if(isset($error)) 
+                        echo '<div class="alert alert-danger alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>'.$error.'
+                                </div>';
+                    if(isset($warning))
+                        echo '<div class="alert alert-warning alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>'.$warning.'
+                                </div>';
+                    if(isset($success))
+                        echo '<div class="alert alert-success alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>'.$success.'
+                                </div>';
+                    if(isset($info))
+                        echo '<div class="alert alert-success alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>'.$info.'
+                                </div>';
+                    if(isset($debug))
+                        echo '<div class="alert alert-dark alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>'.var_export($debug, true).'
+                                </div>';
+                ?>
+                <!-- End Mesages -->

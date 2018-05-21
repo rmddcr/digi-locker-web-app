@@ -20,10 +20,6 @@
                     <input class="form-control input-default col-sm-10" placeholder="Locker number" <?php if(isset($filters) && $filters['locker_no']!="") echo 'value="'.$filters['locker_no'].'"'; ?> name="locker_no" type="number">
                 </div>
                 <div class="form-group row">
-                    <label class="control-label text-right col-sm-2">Plant</label>
-                    <input class="form-control input-default col-sm-10" placeholder="Plant name" <?php if(isset($filters) && $filters['plant']!="") echo 'value="'.$filters['plant'].'"'; ?> name="plant" type="text">
-                </div>
-                <div class="form-group row">
                     <label class="control-label text-right col-sm-2">Section</label>
                     <input class="form-control input-default col-sm-10" placeholder="Section name" <?php if(isset($filters) && $filters['section']!="") echo 'value="'.$filters['section'].'"'; ?> name="section" type="text">
                 </div>
@@ -41,10 +37,9 @@
 		<table id="locker_table" class="display">
 		    <thead>
 		        <tr>
-		            <th>Plant</th>
-		            <th>Section</th>
 		            <th>Locker number</th>
-		            <th>Status</th>
+		            <th>Section</th>
+                    <th>Status</th>
 		            <th></th>
 		        </tr>
 		    </thead>
@@ -52,11 +47,15 @@
 		        <?php
 		        foreach ($lockers as $locker) {
 		        	echo "<tr>";
-		        		echo "<td>".$locker->plant."</td>";
-		        		echo "<td>".$locker->section."</td>";
 		        		echo "<td>".$locker->locker_no."</td>";
-		        		echo "<td>".$locker->status."</td>";
-		        		echo '<td> <a type="button" href="'.base_url().'Locker/view/'.$locker->id.'" class="btn btn-block btn-info"> View </a> </td>';
+		        		echo "<td>".$locker->section."</td>";
+                        echo "<td>";
+                        if($locker->status=='free') echo '<span class="label label-rouded label-success"> Free </span>';
+                        else if($locker->status=='in_use') echo '<span class="label label-rouded label-info"> In Use </span>';
+                        else if($locker->status=='broken') echo '<span class="label label-rouded label-danger"> Broken </span>';
+                        else if($locker->status=='locked') echo '<span class="label label-rouded label-default"> Locked </span>';
+                        echo "</td>";
+		        		echo '<td> <a type="button" href="'.base_url().'Locker/view/'.$locker->locker_no.'" class="btn btn-block btn-info"> View </a> </td>';
 		        	echo "</tr>";
 		        }
 		        ?>

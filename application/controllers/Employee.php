@@ -17,7 +17,7 @@ class Employee extends CI_Controller
         $data['data_tables'] = array('employee_table');
         if(isset($_GET['filter_results']))
         {
-            $data['employees'] = $this->Employee_model->get_filtered_employees($_GET['epf_no'], $_GET['name'], $_GET['team'], $_GET['shift_group'], $_GET['plant'], $_GET['section']);
+            $data['employees'] = $this->Employee_model->get_filtered_employees($_GET['epf_no'], $_GET['name'], $_GET['team'], $_GET['shift_group'], $_GET['section']);
             $data['filters'] = $_GET;
 
         } else 

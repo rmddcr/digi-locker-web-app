@@ -19,7 +19,7 @@ class Locker extends CI_Controller
         $data['data_tables'] = array('locker_table');
         if(isset($_GET['filter_results']))
         {
-            $data['lockers'] = $this->Locker_model->get_filtered_lockers($_GET['status'], $_GET['locker_no'], $_GET['plant'], $_GET['section']);
+            $data['lockers'] = $this->Locker_model->get_filtered_lockers($_GET['status'], $_GET['locker_no'], $_GET['section']);
             $data['filters'] = $_GET;
 
         } else 
@@ -34,11 +34,27 @@ class Locker extends CI_Controller
 
     public function view($locker_id)
     {
-        $data['page_title'] = 'Locker Id';
         
+        $data['locker'] = $this->Locker_model->get_locker_by_id($locker_id);
+        $data['owner'] = $this->Locker_model->get_locker_owner($locker_id);
+        $data['owner_history'] = $this->Locker_model->get_locker_owner_history($locker_id);
+        $data['page_title'] = 'Locker : '.$locker_id.' - '.$data['locker']->section;
+        $data['data_tables'] = array('owner_history_table');
+        //$data['debug'] = $data['owner_history'];
         $this->load->view('template/header',$data);
         $this->load->view('locker/view_locker',$data);
-        $this->load->view('template/footer');
+        $this->load->view('template/footer',$data);
+    }
+
+    public function assign($locker_id)
+    {
+        $data['locker'] = $this->Locker_model->get_locker_by_id($locker_id);
+        $data['page_title'] = 'Assign employee to locker : '.$locker_id.' - '.$data['locker']->section;
+        $data['data_tables'] = array('employee_table');
+        $data['employees'] = $this->Employee_model->get_filtered_employees("", "", "", "", $data['locker']->section);
+        $this->load->view('template/header',$data);
+        $this->load->view('locker/set_owner',$data);
+        $this->load->view('template/footer',$data);
     }
 
     public function new_locker()
