@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
         <div class="form-horizontal">
-            <form method="get" action="<?php echo base_url(); ?>Employee/new_employee">
+            <form method="get" action="<?php echo base_url(); ?>Locker/new_locker">
 
                 <div class="form-group row">
                     <label class="control-label text-right col-sm-2">Locker number</label>
