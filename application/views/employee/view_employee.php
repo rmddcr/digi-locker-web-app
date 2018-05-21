@@ -24,7 +24,7 @@
 							<td>Shift Group:</td>
 							<td><?php echo $result_array[0]['shift_group'] ;?></td>
 						</tr>
-						
+
 						<tr>
 							<td>Section:</td>
 							<td><?php echo $result_array[0]['section_id'] ;?></td>
