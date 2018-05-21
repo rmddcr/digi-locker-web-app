@@ -61,6 +61,7 @@ class Locker extends CI_Controller
     {
 
         $this->form_validation->set_rules('locker_no', 'Locker No', 'required');
+
         if ($this->form_validation->run() === FALSE) {
             $data['page_title'] = 'Add New Locker';
             $data['results_array']='ready for inputs';
