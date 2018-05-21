@@ -13,6 +13,7 @@ class Role extends CI_Controller
     public function index()
     {
         $data['page_title'] = 'Title';
+        $data['result_array']= $this->Role_model->get_all_roles();
         $this->load->view('template/header',$data);
         $this->load->view('role/all_roles',$data);
         $this->load->view('template/footer');
@@ -21,6 +22,7 @@ class Role extends CI_Controller
     public function view($role_id)
     {
         $data['page_title'] = 'Title';
+
         $this->load->view('template/header',$data);
         $this->load->view('role/view_role',$data);
         $this->load->view('template/footer');
