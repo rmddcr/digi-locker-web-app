@@ -1,3 +1,5 @@
+<?php var_dump($results_array);?>
+
 <div class="card">
     <div class="card-body">
         <div class="form-horizontal">
@@ -5,14 +7,14 @@
 
                 <div class="form-group row">
                     <label class="control-label text-right col-sm-2">Locker number</label>
-                    <input class="form-control input-default col-sm-10" placeholder="Locker number"  name="epf_no" type="number">
+                    <input class="form-control input-default col-sm-10" placeholder="Locker number"  name="locker_no" type="number">
                 </div>
 
 
 
                 <div class="form-group row">
                     <label class="control-label text-right col-sm-2">Plant</label>
-                    <select class="form-control input-default col-sm-10 selectize" name="shift_group" placeholder="Plant" type="text">
+                    <select class="form-control input-default col-sm-10 selectize" name="shift_group" placeholder="plant" type="text">
                         <option>Plant 1</option>
                         <option>Plant 2</option>
                         <option>Plant 3</option>
