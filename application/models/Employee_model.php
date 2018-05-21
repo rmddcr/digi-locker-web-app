@@ -41,7 +41,7 @@ class Employee_model extends CI_Model{
 
 
     // simple insert function ti add data to db
-    public function add_employee($epf_no, $name, $team, $shift_group, $plant, $section){
+    public function add_employee($epf_no, $name, $team, $shift_group, $section){
 
 
         $data = array(
@@ -49,8 +49,7 @@ class Employee_model extends CI_Model{
             'name' => $name,
             'team' => $team,
             'shift_group' => $shift_group,
-            'plant' => $plant,
-            'section' => $section
+            'section_id' => $section
 
 
         );
@@ -94,6 +93,9 @@ class Employee_model extends CI_Model{
 
     public function get_employee_locker_history()
     {
+
+
+
 
     }
 }
