@@ -40,7 +40,17 @@ class Locker extends CI_Controller
         $data['owner_history'] = $this->Locker_model->get_locker_owner_history($locker_id);
         $data['page_title'] = 'Locker : '.$locker_id.' - '.$data['locker']->section;
         $data['data_tables'] = array('owner_history_table');
-        //$data['debug'] = $data['owner_history'];
+        if(isset($_POST['status']))
+        {
+            $data['debug'] = "s";
+            $result = $this->Locker_model->change_locker_state($_POST['state'],$locker_id);
+            if($result == true)
+            {
+                $data['success'] = "Successfully changed the locker status";
+            } else {
+                $data['error'] = "Failed to change the locker status";
+            }
+        }
         $this->load->view('template/header',$data);
         $this->load->view('locker/view_locker',$data);
         $this->load->view('template/footer',$data);
