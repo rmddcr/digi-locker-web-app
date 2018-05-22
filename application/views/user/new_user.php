@@ -5,13 +5,37 @@ new_user
 <?php foreach ($result_array as $row) : ?>
 
     <div class="card">
+        <table id="lockers_current_table" class="display">
+            <thead>
+            <tr>
 
-        <div class="card-body"><?php "Confirm user     ";echo $row['user_name'] ; echo  "        As      " ; echo $row['role_name'] ;?>
-            <button type="button" class="btn btn-warning btn-outline m-b-10 m-l-5">Confirm User</button>
-        </div>
+                <th>Name</th>
+                <th>Role</th>
+                <th></th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><?php echo $row['user_name'] ; ?></td>
+                <td><?php echo $row['role_name'] ; ?></td>
+                <td> <form action="<?php echo base_url()."User/view/";?>">
+                        <input type="submit"  class="btn btn-warning m-b-10 m-l-5" value="Assign a role" />
+                    </form>
+
+                </td>
+
+
+
+            </tr>
+            </tbody>
+        </table>
+
 
     </div>
 
 
 <?php endforeach;?>
+
+
 

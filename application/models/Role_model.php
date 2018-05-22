@@ -1,42 +1,12 @@
 <?php
-class Employee_model extends CI_Model{
+class Role_model extends CI_Model{
 
-    function get_filtered_employees($epf_no, $name, $team, $shift_group, $section)
+
+    function get_all_roles()
     {
-        $query = 'SELECT e.epf_no, e.name, e.team, e.shift_group, s.name as section FROM employee as e JOIN section as s ON e.section_id=s.id WHERE 1 ';
-        if($epf_no != "")
-        {
-            $query = $query."AND e.epf_no = ".$epf_no." ";
-        }
-        
-        if($name != "")
-        {
-            $query = $query."AND e.name LIKE '".addslashes($name)."' ";
-        }
-
-        if($team != "")
-        {
-            $query = $query."AND e.team LIKE '".addslashes($team)."' ";
-        }
-
-        if($shift_group != "")
-        {
-            $query = $query."AND e.shift_group LIKE '".addslashes($shift_group)."' ";
-        }
-
-        if($section != "")
-        {
-            $query = $query."AND s.name LIKE '".addslashes($section)."' ";
-        }
+        $query = 'SELECT * From role';
         $query = $this->db->query($query);
-        return $query->result();
-    }
-
-    function get_all_employees()
-    {
-        $query = 'SELECT e.epf_no, e.name, e.team, e.shift_group, s.name as section FROM employee as e JOIN section as s ON e.section_id=s.id';
-        $query = $this->db->query($query);
-        return $query->result();
+        return $query->result_array();
     }
 
 
@@ -72,13 +42,13 @@ class Employee_model extends CI_Model{
 
     }
     /**
-    GET 
-        EMPLOYEE DETAILS
-        EMPLOYEE CURRENT LOCKER DETAILS
-        EMPLOYEE LOCKER HOSTORY DETAILS
-    USING SEPERATE FUNCTIONS 
-    **/
-    
+    GET
+    EMPLOYEE DETAILS
+    EMPLOYEE CURRENT LOCKER DETAILS
+    EMPLOYEE LOCKER HOSTORY DETAILS
+    USING SEPERATE FUNCTIONS
+     **/
+
     public function get_employee_by_id($employee_id)
     {
         $query = 'SELECT * From employee WHERE employee.epf_no = "'.addslashes($employee_id).'"';

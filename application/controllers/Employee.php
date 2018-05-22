@@ -34,9 +34,9 @@ class Employee extends CI_Controller
     //view employee details
     public function view($employee_id)
     {
-        $data['page_title'] = 'Title';
+        $data['page_title'] = 'View Employee Details';
         $data['data_tables'] = array('lockers_histroy_table','lockers_current_table');
-        //$data['result_array']=$this->Employee_model->get_specified_employee($employee_id);
+        $data['result_array']=$this->Employee_model->get_specified_employee($employee_id);
         $this->load->view('template/header',$data);
         $this->load->view('employee/view_employee',$data);
         $this->load->view('template/footer');
@@ -47,20 +47,17 @@ class Employee extends CI_Controller
         $this->form_validation->set_rules('epf_no', 'Employee Number', 'required');
         $this->form_validation->set_rules('name', 'Employee Name', 'required');
 
-
         if ($this->form_validation->run() === FALSE) {
-            $data['page_title'] = $this->form_validation->run()===FALSE;
+            $data['page_title'] = 'Add employee';
+            $data['results_array']=$this->form_validation->run() === TRUE ;
             $this->load->view('template/header',$data);
-            $this->load->view('employee/new_employee_one');
+            $this->load->view('employee/new_employee_one',$data);
             $this->load->view('template/footer');
 
         }else{
-            $this->Employee_model->add_employee($_GET['epf_no'], $_GET['name'], $_GET['team'], $_GET['shift_group'], $_GET['plant'], $_GET['section']);
+            $this->Employee_model->add_employee($_POST['epf_no'], $_POST['name'], $_POST['team'], $_POST['shift_group'], $_POST['section_id']);
 
-            $is_success=
-
-
-                redirect('login');
+                redirect("Employee/view/".$_POST['epf_no']);
             }
         }
 

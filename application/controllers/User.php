@@ -12,7 +12,7 @@ class User extends CI_Controller
     //list all users
     public function index()
     {
-        $data['page_title'] = 'Title';
+        $data['page_title'] = 'View all users';
         $data['result_array'] = $this->User_model->get_all_users();
         $this->load->view('template/header',$data);
         $this->load->view('user/all_users',$data);
@@ -32,8 +32,8 @@ class User extends CI_Controller
 
     public function new_user()
     {
-        $data['page_title'] = 'Title';
-        $data['result_array'] = $this->User_model->get_all_users();
+        $data['page_title'] = 'Add new user';
+        $data['result_array'] = $this->User_model->get_all_new_users();
         $this->load->view('template/header',$data);
         $this->load->view('user/new_user',$data);
         $this->load->view('template/footer');

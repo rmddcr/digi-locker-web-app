@@ -69,10 +69,26 @@ class Locker extends CI_Controller
 
     public function new_locker()
     {
-        $data['page_title'] = 'Title';
-        $this->load->view('template/header',$data);
-        $this->load->view('locker/new_locker_one',$data);
-        $this->load->view('template/footer');
+
+        $this->form_validation->set_rules('locker_no', 'Locker No', 'required');
+
+        if ($this->form_validation->run() === FALSE) {
+            $data['page_title'] = 'Add New Locker';
+            $data['results_array']='ready for inputs';
+            $this->load->view('template/header', $data);
+            $this->load->view('locker/new_locker_one', $data);
+            $this->load->view('template/footer');
+        } else {
+            $data['page_title'] = 'Add New Locker';
+            $locker_no = $this->input->post('locker_no');
+            $plant = $this->input->post('plant');
+            $section_id = $this->input->post('section_id');
+            $data['results_array'] = $this->Locker_model->add_locker($locker_no, $plant, $section_id);
+            $this->load->view('template/header', $data);
+            $this->load->view('locker/new_locker_one', $data);
+            $this->load->view('template/footer');
+
+        }
     }
 
     public function new_locker_bulck()

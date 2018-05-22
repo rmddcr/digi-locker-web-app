@@ -27,6 +27,19 @@ class User_model extends CI_Model{
 
     }
 
+    public function get_all_new_users(){
+
+
+        // $query = $this->db->get('user');
+        $this->db->select('user.user_name ,role.role_name');
+        $this->db->from('user');
+        $this->db->join('role' , 'user.role_id = role.id');
+        $this->db->where('user.role_id', '0');
+        $query = $this->db->get();
+        return $query->result_array();
+
+    }
+
 
 
     public function register($username,$password){
