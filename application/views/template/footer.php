@@ -45,6 +45,9 @@
         $('.selectize').selectize({
             create: true
         });
+        $('.selectize1').selectize({
+            create: true
+        });
         <?php
 
             if(isset($data_tables))

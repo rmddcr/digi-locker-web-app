@@ -98,15 +98,15 @@
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">New Lockers</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url(); ?>Locker/new_locker">Add one</a></li>
-                                <li><a href="<?php echo base_url(); ?>Locker/new_locker_bulck">Add bulk</a></li>
+                                <!-- <li><a href="<?php echo base_url(); ?>Locker/new_locker_bulck">Add bulk</a></li> -->
                             </ul>
                         </li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Lockers</span></a>
+                       <!--  <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Lockers</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url(); ?>Locker/remove_locker_list">Remove from list</a></li>
                                 <li><a href="<?php echo base_url(); ?>Locker/remove_locker_csv">Remove from CVS file</a></li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <li class="nav-devider"></li>
                         <li class="nav-label">Employees</li>
@@ -119,7 +119,7 @@
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Employee</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url(); ?>Employee/remove_employee_list">Remove from list</a></li>
+                                <!-- <li><a href="<?php echo base_url(); ?>Employee/remove_employee_list">Remove from list</a></li> -->
                                 <li><a href="<?php echo base_url(); ?>Employee/remove_employee_csv">Remove from CVS file</a></li>
                             </ul>
                         </li>

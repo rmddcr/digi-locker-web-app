@@ -30,7 +30,7 @@ class Main extends CI_Controller
             // $this->load->view('template/header',$data);
             // $this->load->view('template/debug',array('data' => $_SESSION['user']));
             // $this->load->view('template/footer');
-            redirect('/Locker');
+            redirect('Locker');
         }
         else
         {

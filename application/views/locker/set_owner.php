@@ -44,46 +44,37 @@
 
                 <div class="form-group row">
                     <label class="control-label text-right col-sm-2">EPF Number</label>
-                    <input class="form-control input-default col-sm-10" placeholder="EPF number"  name="epf_no" type="number">
+                    <input class="form-control input-default col-sm-10" placeholder="EPF number"  name="epf_no" type="number" required>
                 </div>
                 <div class="form-group row">
                     <label class="control-label text-right col-sm-2">Employee Name</label>
-                    <input class="form-control input-default col-sm-10" placeholder="Employee name"  name="name" type="text">
+                    <input class="form-control input-default col-sm-10" placeholder="Employee name"  name="name" type="text" required>
                 </div>
 
 
                 <div class="form-group row">
-                <label class="control-label text-right col-sm-2">Team</label>
-                <select class="form-control input-default col-sm-10 selectize" placeholder="Team" name="team" type="text">
-                    <option>Team A</option>
-                    <option>Team B</option>
-                    <option>Team C</option>
-                    <option>Team D</option>
-                </select>
+                    <label class="control-label text-right col-sm-2">Team</label>
+                    <input class="form-control input-default col-sm-10" placeholder="Team"  name="team" type="text">
                 </div>
 
                 <div class="form-group row">
-                <label class="control-label text-right col-sm-2">Shift</label>
-                <select class="form-control input-default col-sm-10 selectize" name="shift_group" placeholder="Shift" type="text">
-                    <option>Shift A</option>
-                    <option>Shift B</option>
-                    <option>Shift C</option>
-                    <option>Shift D</option>
-                </select>
+                <label class="control-label text-right col-sm-2">Shift Group</label>
+                <input class="form-control input-default col-sm-10" placeholder="Shift Group"  name="shift" type="text">
                 </div>
 
                 <div class="form-group row">
                 <label class="control-label text-right col-sm-2">Section</label>
-                <select class="form-control input-default col-sm-10 selectize" name="section_id" placeholder="Section" type="text">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                <select class="form-control input-default col-sm-10 selectize" name="section" placeholder="Section" type="text">
+                    <?php
+                        foreach ($sections as $section) {
+                            echo '<option value="'.$section->id.'">'.$section->name.'</option>';
+                        }
+                    ?>
                 </select>
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" name="filter_results" class="btn btn-success waves-effect waves-light col-sm-4">Add User and Assign Locker : <?php echo $locker->locker_no; ?></button>
+                    <button type="submit" name="new_employee" class="btn btn-success waves-effect waves-light col-sm-4">Add User and Assign Locker : <?php echo $locker->locker_no; ?></button>
                 </div>
             </form>
         </div>

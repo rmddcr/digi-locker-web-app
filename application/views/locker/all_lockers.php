@@ -7,9 +7,9 @@
             <form method="get" action="<?php echo base_url(); ?>Locker/">
             	<div class="form-group row">
                     <label class="control-label text-right col-sm-2">Locker Status</label>
-                    <select class="form-control input-default col-sm-10" name="status" type="text">
+                    <select class="selectize1 form-control input-default col-sm-10" name="status" type="text">
                     	<option selected>all</option>
-                    	<option>in use</option>
+                    	<option value="in_use">in use</option>
                     	<option>free</option>
                     	<option>broken</option>
                     	<option>locked</option>
@@ -21,7 +21,14 @@
                 </div>
                 <div class="form-group row">
                     <label class="control-label text-right col-sm-2">Section</label>
-                    <input class="form-control input-default col-sm-10" placeholder="Section name" <?php if(isset($filters) && $filters['section']!="") echo 'value="'.$filters['section'].'"'; ?> name="section" type="text">
+                    <select class="selectize1 form-control input-default col-sm-10" placeholder="Section name" name="section" type="text">
+                        <option>all</option>
+                        <?php 
+                            foreach ($sections as $section) {
+                                echo '<option>'.$section->name.'</option>';
+                            }
+                        ?>
+                    </select>
                 </div>
                 <div class="text-center">
                     <button type="submit" name="filter_results" class="btn btn-success waves-effect waves-light col-sm-12">Filter</button>
@@ -34,7 +41,7 @@
 
 <div class="card">
     <div class="card-body">
-		<table id="locker_table" class="display">
+		<table id="locker_table" class="table table-striped table-bordered" style="width:100%">
 		    <thead>
 		        <tr>
 		            <th>Locker number</th>

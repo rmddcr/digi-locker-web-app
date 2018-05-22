@@ -73,7 +73,7 @@ echo '
 							</tr>
 							<tr>
 								<td>Assigned by:</td>
-								<td> <a type="button" href="'.base_url().'User/view/'.str_replace('@','$40',$owner->assigned_by).'" class="btn btn-info btn-block">'.$owner->assigned_by.'</a> </td>
+								<td> <a type="button" href="'.base_url().'User/view/'.str_replace('@','%40',$owner->assigned_by).'" class="btn btn-info btn-block">'.$owner->assigned_by.'</a> </td>
 							</tr>
 						</tbody>
 					</table>
