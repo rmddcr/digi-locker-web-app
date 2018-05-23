@@ -42,10 +42,10 @@
     <script src="<?php echo base_url(); ?>assets/js/custom.min.js"></script>
     
     <script>
+        // $('.selectize').selectize({
+        //     create: true
+        // });
         $('.selectize').selectize({
-            create: true
-        });
-        $('.selectize1').selectize({
             create: true
         });
         <?php

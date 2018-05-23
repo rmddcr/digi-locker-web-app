@@ -15,9 +15,12 @@ class Employee extends CI_Controller
     {
         $data['page_title'] = 'Employees';
         $data['data_tables'] = array('employee_table');
+        $data['plants'] = $this->Employee_model->get_all_plants();
+        $data['teams'] = $this->Employee_model->get_all_teams();
+        $data['shifts'] = $this->Employee_model->get_all_shifts();
         if(isset($_GET['filter_results']))
         {
-            $data['employees'] = $this->Employee_model->get_filtered_employees($_GET['epf_no'], $_GET['name'], $_GET['team'], $_GET['shift_group'], $_GET['section']);
+            $data['employees'] = $this->Employee_model->get_filtered_employees($_GET['epf_no'], $_GET['name'], $_GET['team'], $_GET['shift'], $_GET['plant']);
             $data['filters'] = $_GET;
 
         } else 
@@ -35,8 +38,8 @@ class Employee extends CI_Controller
     public function view($employee_id)
     {
         $data['page_title'] = 'View Employee Details';
-        $data['data_tables'] = array('lockers_histroy_table','lockers_current_table');
-        $data['result_array']=$this->Employee_model->get_specified_employee($employee_id);
+        $data['data_tables'] = array('lockers_histroy_table');
+        $data['employee']=$this->Employee_model->get_employee_by_id($employee_id);
         $this->load->view('template/header',$data);
         $this->load->view('employee/view_employee',$data);
         $this->load->view('template/footer');

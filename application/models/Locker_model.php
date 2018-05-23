@@ -1,9 +1,13 @@
 <?php
 class Locker_model extends CI_Model{
 
-    function get_filtered_lockers($status, $locker_no, $section)
+    public function get_all_plants(){
+        return $this->db->get('plant')->result();
+    }
+
+    function get_filtered_lockers($status, $locker_no, $plant)
     {
-        $query = 'SELECT l.locker_no, l.status, s.name as section FROM locker AS l JOIN section AS s ON l.section_id = s.id WHERE 1 ';
+        $query = 'SELECT l.id ,l.locker_no, l.status ,p.name as plant FROM locker AS l JOIN plant AS p ON l.plant_id = p.id WHERE 1 ';
         if($status != "" AND $status != "all")
         {
             $query = $query."AND l.status = '".addslashes($status)."' ";
@@ -13,9 +17,9 @@ class Locker_model extends CI_Model{
         {
             $query = $query."AND l.locker_no = ".$locker_no." ";
         }
-        if($section != "" AND $section != "all")
+        if($plant != "" AND $plant != "all")
         {
-            $query = $query."AND s.name LIKE '".addslashes($section)."' ";
+            $query = $query."AND p.id = '".addslashes($plant)."' ";
         }
         $query = $this->db->query($query);
         return $query->result();
@@ -23,28 +27,28 @@ class Locker_model extends CI_Model{
 
     function get_all_lockers()
     {
-        $query = 'SELECT l.locker_no, l.status, s.name as section FROM locker AS l JOIN section AS s ON l.section_id = s.id';
+        $query = 'SELECT l.id, l.locker_no, l.status, p.name as plant FROM locker AS l JOIN plant AS p ON l.plant_id = p.id';
         $query = $this->db->query($query);
         return $query->result();
     }
 
     function get_locker_owner($locker_id)
     {
-        $query = 'SELECT * FROM employee as e JOIN employee_has_locker as ehl ON e.epf_no = ehl.employee_epf_no WHERE ehl.locker_locker_no = '.$locker_id;
+        $query = 'SELECT e.epf_no, e.name, t.name as team, s.name as shift, p.name as plant, ehl.assigned_time, ehl.assigned_by FROM employee as e JOIN employee_has_locker as ehl ON e.epf_no = ehl.employee_epf_no JOIN shift as s ON e.shift_id=s.id JOIN team as t ON e.team_id=t.id JOIN plant as p ON t.plant_id=p.id  WHERE ehl.locker_id = '.$locker_id;
         $query = $this->db->query($query);
         return $query->row();
     }
 
     function get_locker_owner_history($locker_id)
     {
-        $query = 'SELECT * FROM employee as e JOIN employee_has_locker_history as ehlh ON e.epf_no = ehlh.employee_epf_no WHERE ehlh.locker_locker_no = '.$locker_id;
+        $query = 'SELECT e.epf_no, e.name, t.name as team, s.name as shift, p.name as plant, ehlh.assigned_time, ehlh.assigned_by, ehlh.unassigned_time, ehlh.unassigned_by FROM employee as e JOIN employee_has_locker_history as ehlh ON e.epf_no = ehlh.employee_epf_no JOIN shift as s ON e.shift_id=s.id JOIN team as t ON e.team_id=t.id JOIN plant as p ON t.plant_id=p.id WHERE ehlh.locker_id = '.$locker_id;
         $query = $this->db->query($query);
         return $query->result();
     }
 
     function get_locker_by_id($locker_id)
     {
-        $query = 'SELECT l.locker_no, l.status, s.name as section FROM locker as l JOIN section as s ON l.section_id = s.id WHERE l.locker_no = '.$locker_id;
+        $query = 'SELECT l.id, l.locker_no, l.status, l.status_changed_by, l.status_changed_time, p.name as plant, p.id as plant_id FROM locker as l JOIN plant as p ON l.plant_id = p.id WHERE l.id = '.$locker_id;
         $query = $this->db->query($query);
         return $query->row();
     }
@@ -54,51 +58,51 @@ class Locker_model extends CI_Model{
         $this->db->trans_begin();
         if($state == 'fix' || $state == 'unlock')
         {//set free // if previous show otherwise no 
-            $query = 'SELECT * FROM employee as e JOIN employee_has_locker as ehl ON e.epf_no = ehl.employee_epf_no WHERE ehl.locker_locker_no = '.$locker_id;
+            $query = 'SELECT * FROM employee as e JOIN employee_has_locker as ehl ON e.epf_no = ehl.employee_epf_no WHERE ehl.locker_id = '.$locker_id;
             $query = $this->db->query($query);
             $owner = $query->row();
             if(isset($owner))
             {
-                $query = 'UPDATE locker SET status = "in_use" WHERE locker_no = '.$locker_id;
+                $query = 'UPDATE locker SET status = "in_use", status_changed_time= "'.date('Y-m-d H:i:s',time()).'",status_changed_by = "'.$user.'" WHERE id = '.$locker_id;
                 $query = $this->db->query($query);
                 if(!$query) return false;
 
             } else {
-                $query = 'UPDATE locker SET status = "free" WHERE locker_no = '.$locker_id;
+                $query = 'UPDATE locker SET status = "free", status_changed_time= "'.date('Y-m-d H:i:s',time()).'",status_changed_by = "'.$user.'" WHERE id = '.$locker_id;
                 $query = $this->db->query($query);
                 if(!$query) return false;
             }
 
         }else if($state == 'broken' || $state == 'locked'){//set state
-            $query = 'UPDATE locker SET status = "'.$state.'" WHERE locker_no = '.$locker_id;
+            $query = 'UPDATE locker SET status = "'.$state.'", status_changed_time= "'.date('Y-m-d H:i:s',time()).'",status_changed_by = "'.$user.'" WHERE id = '.$locker_id;
             $query = $this->db->query($query);
             if(!$query) return false;
         
         }else if($state == 'unassign'){
             
-            $query = 'SELECT * FROM employee as e JOIN employee_has_locker as ehl ON e.epf_no = ehl.employee_epf_no WHERE ehl.locker_locker_no = '.$locker_id;
+            $query = 'SELECT * FROM employee as e JOIN employee_has_locker as ehl ON e.epf_no = ehl.employee_epf_no WHERE ehl.locker_id = '.$locker_id;
             $query = $this->db->query($query);
             $owner = $query->row();
             
-            $query1 = 'INSERT INTO employee_has_locker_history(employee_epf_no,locker_locker_no,assigned_time,assigned_by,unassigned_by) VALUES ('.$owner->employee_epf_no.' ,'.$locker_id.', "'.$owner->assigned_time.'","'.$owner->assigned_by.'","'.$user.'")';
+            $query1 = 'INSERT INTO employee_has_locker_history(employee_epf_no,locker_id,assigned_time,assigned_by,unassigned_by) VALUES ('.$owner->employee_epf_no.' ,'.$locker_id.', "'.$owner->assigned_time.'","'.$owner->assigned_by.'","'.$user.'")';
             $query1 = $this->db->query($query1);
             if($query1 != 1) return false;
 
-            $query = 'DELETE FROM employee_has_locker WHERE locker_locker_no = '.$locker_id;
+            $query = 'DELETE FROM employee_has_locker WHERE locker_id = '.$locker_id;
             $query = $this->db->query($query);
             if(!$query) return false;
 
-            $query = 'UPDATE locker SET status = "free" WHERE locker_no = '.$locker_id;
+            $query = 'UPDATE locker SET status = "free", status_changed_time= "'.date('Y-m-d H:i:s',time()).'",status_changed_by = "'.$user.'" WHERE id = '.$locker_id;
             $query = $this->db->query($query);
             if(!$query) return false;
         
         }else if($state == 'assign' && $employee_id != NULL){
             
-            $query = 'INSERT INTO employee_has_locker(employee_epf_no,locker_locker_no,assigned_by) VALUES ('.$employee_id.' ,'.$locker_id.', "'.$user.'")';
+            $query = 'INSERT INTO employee_has_locker(employee_epf_no,locker_id,assigned_by) VALUES ('.$employee_id.' ,'.$locker_id.', "'.$user.'")';
             $query = $this->db->query($query);
             if($query != 1) return false;
             
-            $query = 'UPDATE locker SET status = "in_use" WHERE locker_no = '.$locker_id;
+            $query = 'UPDATE locker SET status = "in_use", status_changed_time= "'.date('Y-m-d H:i:s',time()).'",status_changed_by = "'.$user.'" WHERE id = '.$locker_id;
             $query = $this->db->query($query);
             if(!$query) return false;
 
@@ -119,78 +123,9 @@ class Locker_model extends CI_Model{
         }
     }
 
-
-    public function add_new_employee_and_assign_locker($locker_id, $user, $epf_no, $name, $team, $shift, $section)
+    public function add_new_locker($locker_no, $plant, $user)
     {
-        $this->db->trans_begin();
-
-        if(!is_numeric($section))
-        {
-            $query = 'INSERT into section(name) VALUES ("'.$section.'")';
-            $query = $this->db->query($query);
-            if($query != 1) return false;
-
-            $query = 'SELECT id FROM section WHERE name = "'.$section.'" ';
-            $section = $query->row()->id;
-        }
-
-
-        $query = 'INSERT into employee(epf_no,name,team,shift_group,section_id) VALUES ('.$epf_no.',"'.$name.'", "'.$team.'", "'.$shift.'", '.$section.')';
-        $query = $this->db->query($query);
-        if($query != 1) return false;
-
-        $query = 'INSERT INTO employee_has_locker(employee_epf_no,locker_locker_no,assigned_by) VALUES ('.$epf_no.' ,'.$locker_id.', "'.$user.'")';
-        $query = $this->db->query($query);
-        if($query != 1) return false;
-        
-        $query = 'UPDATE locker SET status = "in_use" WHERE locker_no = '.$locker_id;
-        $query = $this->db->query($query);
-        if(!$query) return false;
-
-        if ($this->db->trans_status() === FALSE)
-        {
-                $this->db->trans_rollback();
-                return false;
-        }
-        else
-        {
-                $this->db->trans_commit();
-                return true;
-        }
-    }
-
-    public function add_locker($locker_no, $plant, $section_id){
-        // User data array
-        $data = array(
-            'locker_no' => $locker_no,
-            'section_id' => $section_id,
-            'status' => 'free'
-
-
-        );
-        // Insert user
-        return $this->db->insert('locker', $data);
-    }
-
-    public function get_all_sections(){
-        return $this->db->get('section')->result();
-    }
-
-    public function add_new_locker($locker_no, $section)
-    {
-        $this->db->trans_begin();
-
-        if(!is_numeric($section))
-        {
-            $query = 'INSERT into section(name) VALUES ("'.$section.'")';
-            $query = $this->db->query($query);
-            if($query != 1) return false;
-
-            $query = 'SELECT id FROM section WHERE name = "'.$section.'" ';
-            $section = $query->row()->id;
-        }
-
-        $query = 'INSERT into locker(locker_no, section_id) VALUES ('.$locker_no.', '.$section.')';
+        $query = 'INSERT into locker(locker_no, plant_id, status_changed_by) VALUES ('.$locker_no.', '.$plant.', "'.$user.'")';
         $query = $this->db->query($query);
         if($query != 1) return false;
 

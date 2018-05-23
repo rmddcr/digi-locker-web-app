@@ -14,16 +14,37 @@
                     <input class="form-control input-default col-sm-10" placeholder="Name" <?php if(isset($filters) && $filters['name']!="") echo 'value="'.$filters['name'].'"'; ?> name="name" type="text">
                 </div>
                 <div class="form-group row">
-                    <label class="control-label text-right col-sm-2">Tean</label>
-                    <input class="form-control input-default col-sm-10" placeholder="Team" <?php if(isset($filters) && $filters['team']!="") echo 'value="'.$filters['team'].'"'; ?> name="team" type="text">
+                    <label class="control-label text-right col-sm-2">Plant</label>
+                    <select class="selectize form-control input-default col-sm-10" placeholder="Plant" name="plant" type="text">
+                        <option>all</option>
+                        <?php 
+                            foreach ($plants as $plant) {
+                                echo '<option value="'.$plant->id.'">'.$plant->name.'</option>';
+                            }
+                        ?>
+                    </select>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label text-right col-sm-2">Team</label>
+                    <select class="selectize form-control input-default col-sm-10" placeholder="Team" name="team" type="text">
+                        <option>all</option>
+                        <?php 
+                            foreach ($teams as $team) {
+                                echo '<option value="'.$team->id.'">'.$team->name.'</option>';
+                            }
+                        ?>
+                    </select>
                 </div>
                 <div class="form-group row">
                     <label class="control-label text-right col-sm-2">Shift Group</label>
-                    <input class="form-control input-default col-sm-10" placeholder="Shift Group" <?php if(isset($filters) && $filters['shift_group']!="") echo 'value="'.$filters['shift_group'].'"'; ?> name="shift_group" type="text">
-                </div>
-                <div class="form-group row">
-                    <label class="control-label text-right col-sm-2">Section</label>
-                    <input class="form-control input-default col-sm-10" placeholder="Section name" <?php if(isset($filters) && $filters['section']!="") echo 'value="'.$filters['section'].'"'; ?> name="section" type="text">
+                    <select class="selectize form-control input-default col-sm-10" placeholder="Shift" name="shift" type="text">
+                        <option>all</option>
+                        <?php 
+                            foreach ($shifts as $shift) {
+                                echo '<option value="'.$shift->id.'">'.$shift->name.'</option>';
+                            }
+                        ?>
+                    </select>
                 </div>
                 <div class="text-center">
                     <button type="submit" name="filter_results" class="btn btn-success waves-effect waves-light col-sm-12">Filter</button>
@@ -41,7 +62,7 @@
 		        <tr>
 		            <th>EPF no</th>
 		            <th>Name</th>
-		            <th>Section</th>
+		            <th>Plant</th>
 		            <th>Team</th>
 		            <th>Shift Group</th>
 		            <th></th>
@@ -53,9 +74,9 @@
 		        	echo "<tr>";
 		        		echo "<td>".$employee->epf_no."</td>";
 		        		echo "<td>".$employee->name."</td>";
-		        		echo "<td>".$employee->section."</td>";
+		        		echo "<td>".$employee->plant."</td>";
 		        		echo "<td>".$employee->team."</td>";
-		        		echo "<td>".$employee->shift_group."</td>";
+		        		echo "<td>".$employee->shift."</td>";
 		        		echo '<td> <a href="'.base_url().'Employee/view/'.$employee->epf_no.'" class="btn btn-block btn-info"> View </a> </td>';
 		        	echo "</tr>";
 		        }

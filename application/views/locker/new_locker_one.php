@@ -9,11 +9,11 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="control-label text-right col-sm-2">Section</label>
-                    <select class="form-control input-default col-sm-10 selectize" placeholder="Section" name="section" type="text">
+                    <label class="control-label text-right col-sm-2">Plant</label>
+                    <select class="form-control input-default col-sm-10 selectize" placeholder="Plant" name="plant" type="text">
                         <?php
-                            foreach ($sections as $section) {
-                                echo '<option value="'.$section->id.'">'.$section->name.'</option>';
+                            foreach ($plants as $plant) {
+                                echo '<option value="'.$plant->id.'">'.$plant->name.'</option>';
                             }
                         ?>
                     </select>
