@@ -59,24 +59,16 @@ class Employee extends CI_Controller
 
                 redirect("Employee/view/".$_POST['epf_no']);
             }
-        }
+    }
 
-      // add new employee as bulks
-    public function new_employee_bulck()
+    public function assign_locker()
     {
         $data['page_title'] = 'Title';
         $this->load->view('template/header',$data);
-        $this->load->view('employee/new_employee_bulck',$data);
+        $this->load->view('employee/assign_locker',$data);
         $this->load->view('template/footer');
     }
-    //remove employee from a list
-    public function remove_employee_list()
-    {
-        $data['page_title'] = 'Title';
-        $this->load->view('template/header',$data);
-        $this->load->view('employee/remove_employee_list',$data);
-        $this->load->view('template/footer');
-    }
+
     //remive employee as a list
     public function remove_employee_csv()
     {

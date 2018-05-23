@@ -109,16 +109,9 @@ class Locker extends CI_Controller
 
             }
         }
+        $data['debug'] = $_SESSION;
         $this->load->view('template/header', $data);
         $this->load->view('locker/new_locker_one', $data);
-        $this->load->view('template/footer');
-    }
-
-    public function new_locker_bulck()
-    {
-        $data['page_title'] = 'Title';
-        $this->load->view('template/header',$data);
-        $this->load->view('locker/new_locker_bulck',$data);
         $this->load->view('template/footer');
     }
 
@@ -129,13 +122,4 @@ class Locker extends CI_Controller
         $this->load->view('locker/remove_locker_list',$data);
         $this->load->view('template/footer');
     }
-
-    public function remove_locker_csv()
-    {
-        $data['page_title'] = 'Title';
-        $this->load->view('template/header',$data);
-        $this->load->view('locker/remove_locker_csv',$data);
-        $this->load->view('template/footer');
-    }
-
 }

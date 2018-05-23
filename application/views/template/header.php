@@ -12,10 +12,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>assets/images/favicon.png">
     <title>Digi Locker</title>
 
+    <link href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/lib/chartist/chartist.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/css/lib/owl.carousel.min.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>assets/css/lib/owl.theme.default.min.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" rel="stylesheet">
+    
     <link href="<?php echo base_url(); ?>assets/css/selectize.bootstrap3.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>assets/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -101,22 +102,24 @@
                                 <!-- <li><a href="<?php echo base_url(); ?>Locker/new_locker_bulck">Add bulk</a></li> -->
                             </ul>
                         </li>
-                       <!--  <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Lockers</span></a>
+                       <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Lockers</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url(); ?>Locker/remove_locker_list">Remove from list</a></li>
-                                <li><a href="<?php echo base_url(); ?>Locker/remove_locker_csv">Remove from CVS file</a></li>
+                               <!--  <li><a href="<?php echo base_url(); ?>Locker/remove_locker_csv">Remove from CVS file</a></li> -->
                             </ul>
-                        </li> -->
+                        </li> 
 
                         <li class="nav-devider"></li>
                         <li class="nav-label">Employees</li>
                         <li> <a href="<?php echo base_url(); ?>Employee/" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">All Employees</span></a></li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">New Employee</span></a>
+
+                        <li> <a href="<?php echo base_url(); ?>Employee/new_employee" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">New Employee</span></a></li>
+                        <!-- <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">New Employee</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url(); ?>Employee/new_employee">Add one</a></li>
                                 <li><a href="<?php echo base_url(); ?>Employee/new_employee_bulck">Add bulk</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Employee</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <!-- <li><a href="<?php echo base_url(); ?>Employee/remove_employee_list">Remove from list</a></li> -->
@@ -136,6 +139,13 @@
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url(); ?>Role/">List Roles</a></li>
                                 <li><a href="<?php echo base_url(); ?>Role/new_role">New Role</a></li>
+                            </ul>
+                        </li>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">System</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="<?php echo base_url(); ?>System/">New Plant</a></li>
+                                <li><a href="<?php echo base_url(); ?>System/">New Team</a></li>
+                                <li><a href="<?php echo base_url(); ?>System/">Restore</a></li>
                             </ul>
                         </li>
 

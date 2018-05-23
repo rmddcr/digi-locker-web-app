@@ -112,9 +112,9 @@ echo '
 		        		echo "<td>".$employee->shift_group."</td>";
 		        		echo "<td>".$employee->assigned_time."</td>";
 		        		echo "<td>".$employee->unassigned_time."</td>";
-		        		echo '<td><a type="button" href="'.base_url().'User/view/'.str_replace('@','$40',$employee->assigned_by).'" class="btn btn-success btn-block">'.$employee->assigned_by.'</a></td>';
-		        		echo '<td><a type="button" href="'.base_url().'User/view/'.str_replace('@','$40',$employee->unassigned_by).'" class="btn btn-warning btn-block">'.$employee->unassigned_by.'</a></td>';
-		        		echo '<td> <a type="button" href="'.base_url().'Employee/view/'.$employee->epf_no.'" class="btn btn-block btn-info"> View </a> </td>';
+		        		echo '<td><a href="'.base_url().'User/view/'.str_replace('@','$40',$employee->assigned_by).'" class="btn btn-success btn-block">'.$employee->assigned_by.'</a></td>';
+		        		echo '<td><a href="'.base_url().'User/view/'.str_replace('@','$40',$employee->unassigned_by).'" class="btn btn-warning btn-block">'.$employee->unassigned_by.'</a></td>';
+		        		echo '<td> <a href="'.base_url().'Employee/view/'.$employee->epf_no.'" class="btn btn-block btn-info"> View </a> </td>';
 		        	echo "</tr>";
 		        }
 		        ?>

@@ -62,7 +62,7 @@
                         else if($locker->status=='broken') echo '<span class="label label-rouded label-danger"> Broken </span>';
                         else if($locker->status=='locked') echo '<span class="label label-rouded label-default"> Locked </span>';
                         echo "</td>";
-		        		echo '<td> <a type="button" href="'.base_url().'Locker/view/'.$locker->locker_no.'" class="btn btn-block btn-info"> View </a> </td>';
+		        		echo '<td> <a href="'.base_url().'Locker/view/'.$locker->locker_no.'" class="btn btn-block btn-info"> View </a> </td>';
 		        	echo "</tr>";
 		        }
 		        ?>

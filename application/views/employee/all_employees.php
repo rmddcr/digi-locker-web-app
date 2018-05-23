@@ -56,7 +56,7 @@
 		        		echo "<td>".$employee->section."</td>";
 		        		echo "<td>".$employee->team."</td>";
 		        		echo "<td>".$employee->shift_group."</td>";
-		        		echo '<td> <a type="button" href="'.base_url().'Employee/view/'.$employee->epf_no.'" class="btn btn-block btn-info"> View </a> </td>';
+		        		echo '<td> <a href="'.base_url().'Employee/view/'.$employee->epf_no.'" class="btn btn-block btn-info"> View </a> </td>';
 		        	echo "</tr>";
 		        }
 		        ?>

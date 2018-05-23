@@ -24,7 +24,7 @@
 		        		echo "<td>".$employee->team."</td>";
 		        		echo "<td>".$employee->shift_group."</td>";
 		        		echo '<td> <form method="post" action="'.current_url().'">
-		        			<button type="submit" name="employee_id" value="'.$employee->epf_no.'" type="button" href="'.base_url().'Employee/view/'.$employee->epf_no.'" class="btn btn-block btn-success"> Assigne </button>
+		        			<button type="submit" name="employee_id" value="'.$employee->epf_no.'" href="'.base_url().'Employee/view/'.$employee->epf_no.'" class="btn btn-block btn-success"> Assigne </button>
 		        				</form> </td>';
 		        	echo "</tr>";
 		        }
