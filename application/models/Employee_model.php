@@ -61,14 +61,18 @@ class Employee_model extends CI_Model{
         return $query->row();
     }
 
-    public function get_employee_current_locker()
+    public function get_employee_current_locker($employee_id)
     {
-
+        $query = 'SELECT l.id, l.locker_no, l.plant_id as plant_id, p.name as plant, ehl.assigned_by, ehl.assigned_time  FROM locker as l JOIN employee_has_locker as ehl ON l.id = ehl.locker_id JOIN plant as p ON l.plant_id = p.id WHERE ehl.employee_epf_no = '.$employee_id;
+        $query = $this->db->query($query);
+        return $query->row();
     }
 
-    public function get_employee_locker_history()
+    public function get_employee_locker_history($employee_id)
     {
-
+        $query = 'SELECT l.id, l.locker_no, l.plant_id as plant_id, p.name as plant, ehlh.assigned_by, ehlh.assigned_time, ehlh.unassigned_by, ehlh.unassigned_time  FROM locker as l JOIN employee_has_locker_history as ehlh ON l.id = ehlh.locker_id JOIN plant as p ON l.plant_id = p.id WHERE ehlh.employee_epf_no = '.$employee_id;
+        $query = $this->db->query($query);
+        return $query->result();
     }
 
     function get_employees_without_lockers($plant)

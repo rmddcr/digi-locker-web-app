@@ -35,7 +35,6 @@
 			</div>
 
 		</div>
-		<button type="button" class="btn btn-success">Assign Locker</button>
 		<span class="pull-right">
 			<button type="button" class="btn btn-info ">Edit</button>
 		<button type="button" class="btn btn-danger ">Delete</button>
@@ -49,8 +48,16 @@
 	<div class="card-title">
         <h4>Lockers Assigned to Employee</h4>
     </div>
-	<div class="card-body"> 
-		
+	<div class="card-body">
+		<?php 
+		if(isset($locker))
+		{
+
+		} else {
+			echo '<a href="'.base_url().'Employee/assign_locker/'.$employee->epf_no.'" class="btn btn-success">Assign Locker</a>';
+		}
+
+		?>
 	</div>
 	
 </div>

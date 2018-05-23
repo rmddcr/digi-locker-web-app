@@ -39,7 +39,11 @@ class Employee extends CI_Controller
     {
         $data['page_title'] = 'View Employee Details';
         $data['data_tables'] = array('lockers_histroy_table');
-        $data['employee']=$this->Employee_model->get_employee_by_id($employee_id);
+        $data['employee'] = $this->Employee_model->get_employee_by_id($employee_id);
+        $data['locker'] = $this->Employee_model->get_employee_current_locker($employee_id);
+        $data['locker_history'] = $this->Employee_model->get_employee_locker_history($employee_id);
+        $data['debug'] = $data['locker'];
+        //$data['debug'] = $data['locker_history'];
         $this->load->view('template/header',$data);
         $this->load->view('employee/view_employee',$data);
         $this->load->view('template/footer');
@@ -64,7 +68,7 @@ class Employee extends CI_Controller
             }
     }
 
-    public function assign_locker()
+    public function assign_locker($employee_id)
     {
         $data['page_title'] = 'Title';
         $this->load->view('template/header',$data);
