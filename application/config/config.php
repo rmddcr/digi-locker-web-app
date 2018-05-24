@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://159.65.227.196/digi-locker-web-app/';
+$config['base_url'] = 'http://localhost:8081/';
 
 /*
 |--------------------------------------------------------------------------
