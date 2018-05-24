@@ -39,4 +39,14 @@ class User extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function authorize_new_user()
+    {
+        $data['page_title'] = 'Add new user';
+        $data['result_array'] = $this->User_model->get_all_new_users();
+        $this->load->view('template/header',$data);
+        $this->load->view('user/new_user',$data);
+        $this->load->view('template/footer');
+    }
+
+
 }
