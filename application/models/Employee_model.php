@@ -1,9 +1,23 @@
 <?php
 class Employee_model extends CI_Model{
-
-    function get_filtered_employees($epf_no, $name, $team, $shift_group, $section)
+    function get_all_plants()
     {
-        $query = 'SELECT e.epf_no, e.name, e.team, e.shift_group, s.name as section FROM employee as e JOIN section as s ON e.section_id=s.id WHERE 1 ';
+        return $this->db->get('plant')->result();
+    }
+
+    function get_all_teams()
+    {
+        return $this->db->get('team')->result();
+    }
+
+    function get_all_shifts()
+    {
+        return $this->db->get('shift')->result();
+    }
+
+    function get_filtered_employees($epf_no, $name, $team, $shift, $plant)
+    {
+        $query = 'SELECT e.epf_no, e.name, t.name as team, s.name as shift, p.name as plant FROM employee as e JOIN shift as s ON e.shift_id = s.id JOIN team as t ON e.team_id = t.id JOIN plant as p ON t.plant_id = p.id WHERE 1 ';
         if($epf_no != "")
         {
             $query = $query."AND e.epf_no = ".$epf_no." ";
@@ -11,22 +25,22 @@ class Employee_model extends CI_Model{
         
         if($name != "")
         {
-            $query = $query."AND e.name LIKE '".addslashes($name)."' ";
+            $query = $query."AND e.name LIKE '%".addslashes($name)."%' ";
         }
 
-        if($team != "")
+        if($team != "" && $team != "all")
         {
-            $query = $query."AND e.team LIKE '".addslashes($team)."' ";
+            $query = $query."AND t.id = '".addslashes($team)."' ";
         }
 
-        if($shift_group != "")
+        if($shift != "" && $shift != "all")
         {
-            $query = $query."AND e.shift_group LIKE '".addslashes($shift_group)."' ";
+            $query = $query."AND s.id = '".addslashes($shift)."' ";
         }
 
-        if($section != "")
+        if($plant != "" && $plant != "all")
         {
-            $query = $query."AND s.name LIKE '".addslashes($section)."' ";
+            $query = $query."AND p.id = '".addslashes($plant)."' ";
         }
         $query = $this->db->query($query);
         return $query->result();
@@ -34,69 +48,38 @@ class Employee_model extends CI_Model{
 
     function get_all_employees()
     {
-        $query = 'SELECT e.epf_no, e.name, e.team, e.shift_group, s.name as section FROM employee as e JOIN section as s ON e.section_id=s.id';
+        $query = 'SELECT e.epf_no, e.name, t.name as team, s.name as shift, p.name as plant FROM employee as e JOIN shift as s ON e.shift_id = s.id JOIN team as t ON e.team_id = t.id JOIN plant as p ON t.plant_id = p.id ';
         $query = $this->db->query($query);
         return $query->result();
     }
 
 
-    // simple insert function ti add data to db
-    public function add_employee($epf_no, $name, $team, $shift_group, $section){
-
-
-        $data = array(
-            'epf_no' => $epf_no,
-            'name' => $name,
-            'team' => $team,
-            'shift_group' => $shift_group,
-            'section_id' => $section
-
-
-        );
-        // Insert user
-        return $this->db->insert('employee', $data);
-
-
-    }
-
-    public function get_specified_employee($user_id){
-
-
-        // $query = $this->db->get('user');
-        $this->db->select('employee.epf_no , employee.name , employee.team , employee.shift_group ,employee.section_id ,employee_has_locker.locker_locker_no' );
-        $this->db->from('employee');
-        $this->db->join('employee_has_locker' , 'employee.epf_no = employee_has_locker.employee_epf_no', 'left');
-        $this->db->where('employee.epf_no', $user_id);
-        $query = $this->db->get();
-        return $query->result_array();
-
-    }
-    /**
-    GET 
-        EMPLOYEE DETAILS
-        EMPLOYEE CURRENT LOCKER DETAILS
-        EMPLOYEE LOCKER HOSTORY DETAILS
-    USING SEPERATE FUNCTIONS 
-    **/
-    
     public function get_employee_by_id($employee_id)
     {
-        $query = 'SELECT * From employee WHERE employee.epf_no = "'.addslashes($employee_id).'"';
+        $query = 'SELECT e.epf_no, e.name, t.name as team, s.name as shift, p.name as plant, p.id as plant_id FROM employee as e JOIN shift as s ON e.shift_id = s.id JOIN team as t ON e.team_id = t.id JOIN plant as p ON t.plant_id = p.id  WHERE e.epf_no = '.$employee_id;
+        $query = $this->db->query($query);
+        return $query->row();
+    }
+
+    public function get_employee_current_locker($employee_id)
+    {
+        $query = 'SELECT l.id, l.locker_no, l.plant_id as plant_id, p.name as plant, ehl.assigned_by, ehl.assigned_time  FROM locker as l JOIN employee_has_locker as ehl ON l.id = ehl.locker_id JOIN plant as p ON l.plant_id = p.id WHERE ehl.employee_epf_no = '.$employee_id;
+        $query = $this->db->query($query);
+        return $query->row();
+    }
+
+    public function get_employee_locker_history($employee_id)
+    {
+        $query = 'SELECT l.id, l.locker_no, l.plant_id as plant_id, p.name as plant, ehlh.assigned_by, ehlh.assigned_time, ehlh.unassigned_by, ehlh.unassigned_time  FROM locker as l JOIN employee_has_locker_history as ehlh ON l.id = ehlh.locker_id JOIN plant as p ON l.plant_id = p.id WHERE ehlh.employee_epf_no = '.$employee_id;
         $query = $this->db->query($query);
         return $query->result();
     }
 
-    public function get_employee_current_locker()
+    function get_employees_without_lockers($plant)
     {
-
-    }
-
-    public function get_employee_locker_history()
-    {
-
-
-
-
+        $query = 'SELECT e.epf_no, e.name, t.name as team, s.name as shift, p.name as plant, p.id as plant_id FROM employee as e JOIN shift as s ON e.shift_id = s.id JOIN team as t ON e.team_id = t.id JOIN plant as p ON t.plant_id = p.id WHERE NOT EXISTS (SELECT * FROM employee_has_locker as ehl WHERE ehl.employee_epf_no = e.epf_no) AND p.id ='.$plant;
+        $query = $this->db->query($query);
+        return $query->result();
     }
 }
 

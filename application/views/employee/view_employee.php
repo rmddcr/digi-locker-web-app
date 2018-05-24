@@ -1,8 +1,6 @@
-<?php var_dump($result_array[0]) ;?>
-
 <div class="card">
 	<div class="card-title">
-        <h4><?php echo $result_array[0]['name'] ;?></h4>
+        <h4><?php echo $employee->name ;?></h4>
     </div>
 	<div class="card-body"> 
 		
@@ -13,28 +11,30 @@
 				<table class="table table-user-information">
 					<tbody>
 						<tr>
+							<td>Name:</td>
+							<td><?php echo $employee->name  ;?></td>
+						</tr>
+						<tr>
 							<td>EPF Number:</td>
-							<td><?php echo $result_array[0]['epf_no'] ;?></td>
+							<td><?php echo $employee->epf_no  ;?></td>
+						</tr>
+						<tr>
+							<td>Plant:</td>
+							<td><?php echo $employee->plant  ;?></td>
 						</tr>
 						<tr>
 							<td>Team:</td>
-							<td><?php echo $result_array[0]['team'] ;?></td>
+							<td><?php echo $employee->team ;?></td>
 						</tr>
 						<tr>
 							<td>Shift Group:</td>
-							<td><?php echo $result_array[0]['shift_group'] ;?></td>
-						</tr>
-
-						<tr>
-							<td>Section:</td>
-							<td><?php echo $result_array[0]['section_id'] ;?></td>
+							<td><?php echo $employee->shift ;?></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 
 		</div>
-		<button type="button" class="btn btn-success">Assign Locker</button>
 		<span class="pull-right">
 			<button type="button" class="btn btn-info ">Edit</button>
 		<button type="button" class="btn btn-danger ">Delete</button>
@@ -48,38 +48,23 @@
 	<div class="card-title">
         <h4>Lockers Assigned to Employee</h4>
     </div>
-	<div class="card-body"> 
-		<table id="lockers_current_table" class="display">
-		    <thead>
-		        <tr>
-		            <th>EPF no</th>
-		            <th>Name</th>
-		            <th>Plant</th>
-		            <th>Section</th>
-		            <th>Team</th>
-		            <th>Shift Group</th>
-		            <th></th>
-		        </tr>
-		    </thead>
-		    <tbody>
-		        <tr>
-		        	<td>EPF no</td>
-		            <td>Name</td>
-		            <td>Plant</td>
-		            <td>Section</td>
-		            <td>Team</td>
-		            <td>Shift Group</td>
-		            <td>Button to view</td>
-		        </tr>
-		    </tbody>
-		</table>
+	<div class="card-body">
+		<?php 
+		if(isset($locker))
+		{
+
+		} else {
+			echo '<a href="'.base_url().'Employee/assign_locker/'.$employee->epf_no.'" class="btn btn-success">Assign Locker</a>';
+		}
+
+		?>
 	</div>
 	
 </div>
 
 <div class="card">
 	<div class="card-title">
-        <h4>Lockers Assigned Before to Employee</h4>
+        <h4>Locker Assigned Before to Employee</h4>
     </div>
 	<div class="card-body"> 
 		<table id="lockers_histroy_table" class="display">
