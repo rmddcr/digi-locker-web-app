@@ -27,3 +27,57 @@
         </div>
     </div>
 </div>
+
+<?php
+if(isset($warrning_count))
+{
+echo
+'<div class="card">
+	<div class="card-title">
+        <h4>Warnings</h4>
+       </div>
+    <div class="card-body">';
+if($warrning_count>0)
+{
+	echo '<div class="card">
+		<p> No of Warnings <strong>'.$warrning_count.'</strong> <br>
+		Rows read from CVS file : <strong>'.$read_rows.'</strong> <br>
+		Rows inserted from CVS file to the system : <strong>'.$inserted_rows.'</strong>
+		</p>
+		</div>';
+	echo '<div class="table-responsive">
+		<table id="warnings" class="table">
+		    <thead>
+		        <tr>
+		            <th>Row number</th>
+		            <th>Warning</th>
+		        </tr>
+		    </thead>
+		    <tbody>';
+
+		 foreach ($warrnings as $warning) {
+		 	echo '<tr>';
+		 	echo  '<td>'.$warning['row'].'</td>';
+		 	echo  '<td>'.$warning['error'].'</td>';
+		 	echo '</tr>';
+		 }
+		    
+	echo   '</tbody>
+		</table>
+		</div>';
+
+} else
+{
+	echo '
+	<p> No Warnings <br>
+		Rows read from CVS file : <strong>'.$read_rows.'</strong> <br>
+		Rows inserted from CVS file to the system : <strong>'.$inserted_rows.'</strong>
+	</p>';
+} 
+
+echo 
+	'</div>
+</div>';
+
+}
+?>

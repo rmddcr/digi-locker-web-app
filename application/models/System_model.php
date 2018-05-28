@@ -49,34 +49,35 @@ class System_model extends CI_Model{
     		$result['error'] = 'Failed to restore the system <strong> File type of uploaded file is '.$_FILES[$file_name]['type'].'. </strong> File type must be <strong>text/csv</strong>'; 
     		return $result;
     	}
+    	ini_set('auto_detect_line_endings',TRUE);
 		if (($handle = fopen($_FILES[$file_name]['tmp_name'], "r")) !== FALSE) 
 		{
 			$this->db->trans_begin();
 			
-			$row = 0;
-			$reult['entered_rows'] = 0;
+			$result['row'] = 0;
+			$result['entered_rows'] = 0;
 		    while (($data = fgetcsv($handle,",")) !== FALSE) 
 		    {
-		    	$row++;
+		    	$result['row']++;
 		        if($data[0] == "#end")// check end tag
 		        {
 		        	$result['end'] = '#end';
 		        	break;
 		        }
-		        if($row == 1)// skip 1st row 
+		        if($result['row'] == 1)// skip 1st row 
 		        {
 		        	continue;
 		        }
 
 		        if($data[0] == "")// check empty locker number rows
 		        {
-		        	array_push($result['errpr_rows'], array('row' => $row, 'error' => "locker number field empty"));
+		        	array_push($result['errpr_rows'], array('row' => $result['row'], 'error' => "locker number field empty"));
 		        	$result['errors']++;
 		        	continue;
 		        }
 		        if( !is_numeric($data[0]) )// check invalid locker number rows
 		        {
-		        	array_push($result['error_rows'], array('row' => $row, 'error' => "locker number invalid"));
+		        	array_push($result['error_rows'], array('row' => $result['row'], 'error' => "locker number invalid"));
 		        	$result['errors']++;
 		        	continue;
 		        }
@@ -93,7 +94,7 @@ class System_model extends CI_Model{
 		        $query = $query->row();
 		        if(isset($query))
 		        {
-		        	array_push($result['error_rows'], array('row' => $row, 'error' => "locker already in the system"));
+		        	array_push($result['error_rows'], array('row' => $result['row'], 'error' => "locker already in the system"));
 		        	$result['errors']++;
 		        	continue;
 		        }
@@ -102,6 +103,7 @@ class System_model extends CI_Model{
 		        $query = 'INSERT INTO locker(locker_no, plant_id, status_changed_by) VALUES ('.$locker_no.', '.$plant_id.', "'.addslashes($_SESSION['user']['username']).'")';
 		        $query = $this->db->query($query);
         		if($query != 1) {$result['error']="Failed to insert new locker ROW : ".$row; return $result;}
+        		$result['entered_rows']++;
 
         		//if locker is broken or locked
         		if($employee_epf_no=="Locked " ||  $employee_epf_no=="Broken" || $employee_epf_no=="Locked" )
@@ -122,7 +124,7 @@ class System_model extends CI_Model{
 		        $query = $query->row();
 		        if(isset($query))
 		        {
-		        	array_push($result['error_rows'], array('row' => $row, 'error' => "employee already in the system EPF no: <strong>".$employee_epf_no."</strong> , name: ".$query->name));
+		        	array_push($result['error_rows'], array('row' => $result['row'], 'error' => "employee already in the system EPF no: <strong>".$employee_epf_no."</strong> , name: ".$query->name));
 		        	$result['errors']++;
 		        	continue;
 		        }
@@ -183,7 +185,7 @@ class System_model extends CI_Model{
 		        $query = $this->db->query($query);
 	        	if($query != 1) {$result['error']="Failed to assgin locker ROW : ".$row; return $result;}
 		    	
-		    	$reult['entered_rows']++;
+		    	
 		    }
 		    fclose($handle);
 

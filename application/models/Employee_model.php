@@ -128,9 +128,136 @@ class Employee_model extends CI_Model{
                 $result['status'] = "success";
                 $result['employee_id'] = $epf_no;
                 return $result;
+        }        
+    }
+
+    function remove_employees_csv($file_name)
+    {
+        //var_dump($_FILES[$file_name]);
+        $result['status'] = 'failed';
+        $result['error'] = 'Failed to remove employees <strong> Unknown error </strong>';
+        $result['errors'] = 0;
+        $result['error_rows'] = array();
+        $result['deleted'] = array();
+        
+        if($_FILES[$file_name]['error'] != 0)
+        {
+            $result['error'] = 'Failed to remove employees <strong> Error when uploading : '.$_FILES[$file_name]['error'].'. </strong>'; 
+            return $result;
+        }
+        if($_FILES[$file_name]['type'] != "text/csv")
+        {
+            $result['error'] = 'Failed to remove employees <strong> File type of uploaded file is '.$_FILES[$file_name]['type'].'. </strong> File type must be <strong>text/csv</strong>'; 
+            return $result;
+        }
+        ini_set('auto_detect_line_endings',TRUE);
+        if (($handle = fopen($_FILES[$file_name]['tmp_name'], "r")) !== FALSE) 
+        {
+            $this->db->trans_begin();
+            
+            $result['row'] = 0;
+            $result['entered_rows'] = 0;
+            while (($data = fgetcsv($handle,",")) !== FALSE) 
+            {
+                $result['row']++;
+                if($data[0] == "#end")// check end tag
+                {
+                    $result['end'] = '#end';
+                    break;
+                }
+
+                if($result['row'] == 1)// skip 1st row 
+                {   
+                    continue;
+                }
+                
+
+                
+
+                if($data[0] == "")// check empty rows
+                {
+                    array_push($result['errpr_rows'], array('row' => $result['row'], 'error' => "EPF number field empty"));
+                    $result['errors']++;
+                    continue;
+                }
+                if( !is_numeric($data[0]) )// check invalid EPF number
+                {
+                    array_push($result['error_rows'], array('row' => $result['row'], 'error' => "EPF number invalid"));
+                    $result['errors']++;
+                    continue;
+                }
+
+                $epf_no = $data[0];
+                
+                //check locker already in the system
+                $query = 'SELECT epf_no FROM employee WHERE epf_no = '.$epf_no;
+                $query = $this->db->query($query);
+                $query = $query->row();
+                if(!isset($query))
+                {
+                    array_push($result['error_rows'], array('row' => $result['row'], 'error' => "Employee with EPF number <strong>".$epf_no."</strong> in not in the system"));
+                    $result['errors']++;
+                    continue;
+                }
+
+                //check assgined locker
+                $query = 'SELECT locker_id FROM employee_has_locker WHERE employee_epf_no = '.$epf_no;
+                $query = $this->db->query($query);
+                $query = $query->row();
+                if(isset($query))
+                {   
+                    //free assigned locker
+                    $locker_id = $query->locker_id;
+                    $query = 'UPDATE locker SET status = "free" WHERE id = '.$locker_id;
+                    $query = $this->db->query($query);
+                    if(!$query) {$result['error']="Failed to update locker status to FREE, ROW : ".$row; return $result;}
+
+                    $query = 'DELETE FROM employee_has_locker WHERE employee_epf_no = '.$epf_no;
+                    $query = $this->db->query($query);
+                    if(!$query) {$result['error']="Failed to delete record employee locker , ROW : ".$row; return $result;}
+                }
+
+                //check employee locker histroy
+                $query = 'SELECT locker_id FROM employee_has_locker_history WHERE employee_epf_no = '.$epf_no;
+                $query = $this->db->query($query);
+                $query = $query->row();
+                if(isset($query))
+                {
+                    //delete employee locker histroy
+                    $query = 'DELETE FROM employee_has_locker_history WHERE employee_epf_no = '.$epf_no;
+                    $query = $this->db->query($query);
+                    if(!$query) {$result['error']="Failed to delete records employee locker history, ROW : ".$row; return $result;}
+                }
+
+                //delete employee
+                $query = 'DELETE FROM employee WHERE epf_no = '.$epf_no;
+                    $query = $this->db->query($query);
+                    if(!$query) {$result['error']="Failed to delete, ROW : ".$row; return $result;}
+
+                array_push($result['deleted'], $epf_no);
+                $result['entered_rows']++;
+                
+            }
+            fclose($handle);
+
+            if ($this->db->trans_status() === FALSE)
+            {
+                    $this->db->trans_rollback();
+                    $result['error'] = "Failed to remove employees <strong> Database error </strong>";
+                    return $result;
+            }
+            else
+            {
+                    $this->db->trans_commit();
+                    $result['status'] = "success";
+                    return $result;
+            }
+
+        } else {
+            $result['error'] = 'Failed to remove employees <strong> Cannot open the file </strong>';
         }
 
-        
+        return $result;
     }
 
 
