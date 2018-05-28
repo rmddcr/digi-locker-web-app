@@ -57,7 +57,8 @@
 
 <div class="card">
     <div class="card-body">
-		<table id="employee_table" class="display">
+        <div class="table-responsive">
+		<table id="employee_table" class="table">
 		    <thead>
 		        <tr>
 		            <th>EPF no</th>
@@ -65,6 +66,7 @@
 		            <th>Plant</th>
 		            <th>Team</th>
 		            <th>Shift Group</th>
+                    <th>Has Locker</th>
 		            <th></th>
 		        </tr>
 		    </thead>
@@ -77,12 +79,17 @@
 		        		echo "<td>".$employee->plant."</td>";
 		        		echo "<td>".$employee->team."</td>";
 		        		echo "<td>".$employee->shift."</td>";
+                        if($employee->has_locker == 1)
+                            echo '<td> <span class="label label-rouded label-success"> Yes </span> </td>';
+                        else
+                            echo '<td> <span class="label label-rouded label-danger"> No </span> </td>';
 		        		echo '<td> <a href="'.base_url().'Employee/view/'.$employee->epf_no.'" class="btn btn-block btn-info"> View </a> </td>';
 		        	echo "</tr>";
 		        }
 		        ?>
 		    </tbody>
 		</table>
+    </div>
 	</div>
 </div>
 

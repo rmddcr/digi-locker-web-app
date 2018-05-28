@@ -36,8 +36,8 @@
 
 		</div>
 		<span class="pull-right">
-			<button type="button" class="btn btn-info ">Edit</button>
-		<button type="button" class="btn btn-danger ">Delete</button>
+			<a href="<?php echo base_url(); ?>Employee/edit/<?php echo $employee->epf_no; ?>" class="btn btn-info ">Edit</a>
+			<a href="<?php echo base_url(); ?>Employee/delete/<?php echo $employee->epf_no; ?>" class="btn btn-danger ">Delete</a>
 		</span>	
 	</div>
 	
@@ -52,6 +52,29 @@
 		<?php 
 		if(isset($locker))
 		{
+			echo '
+			<div class="table-responsive">
+		<table class="table">
+		    <thead>
+		        <tr>
+		            <th>Locker number </th>
+		            <th>Plant </th>
+		            <th>Assgined by </th>
+		            <th>Assigned time</th>
+		            <th></th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+		        	<td>'.$locker->locker_no.'</td>
+		        	<td>'.$locker->plant.'</td>
+		        	<td> <a type="button" href="'.base_url().'User/view/'.str_replace('@','%40',$locker->assigned_by).'" class="btn btn-success btn-block">'.$locker->assigned_by.'</a> </td>
+		        	<td>'.$locker->assigned_time.'</td>
+		        	<td> <a type="button" href="'.base_url().'Locker/view/'.$locker->id.'" class="btn btn-info btn-block"> View locker '.$locker->locker_no.'</a> </td>
+		        </tr>
+		    </tbody>
+		</table>
+		</div>';
 
 		} else {
 			echo '<a href="'.base_url().'Employee/assign_locker/'.$employee->epf_no.'" class="btn btn-success">Assign Locker</a>';
@@ -67,30 +90,38 @@
         <h4>Locker Assigned Before to Employee</h4>
     </div>
 	<div class="card-body"> 
-		<table id="lockers_histroy_table" class="display">
+		<div class="table-responsive">
+		<table id="lockers_histroy_table" class="table">
 		    <thead>
 		        <tr>
-		            <th>EPF no</th>
-		            <th>Name</th>
-		            <th>Plant</th>
-		            <th>Section</th>
-		            <th>Team</th>
-		            <th>Shift Group</th>
+		            <th>Locker number </th>
+		            <th>Plant </th>
+		            <th>Unassigned time</th>
+		            <th>Assigned time</th>
+		            <th>Assgined by </th>
+		            <th>Unassgined by </th>
 		            <th></th>
 		        </tr>
 		    </thead>
 		    <tbody>
-		        <tr>
-		        	<td>EPF no</td>
-		            <td>Name</td>
-		            <td>Plant</td>
-		            <td>Section</td>
-		            <td>Team</td>
-		            <td>Shift Group</td>
-		            <td>Button to view</td>
-		        </tr>
+		    	<?php
+		    	foreach ($locker_history as $locker) {
+		    		echo '
+		    		<tr>
+		    		<td>'.$locker->locker_no.'</td>
+		        	<td>'.$locker->plant.'</td>
+		        	<td>'.$locker->assigned_time.'</td>
+		        	<td>'.$locker->unassigned_time.'</td>
+		        	<td> <a type="button" href="'.base_url().'User/view/'.str_replace('@','%40',$locker->assigned_by).'" class="btn btn-success btn-block">'.$locker->assigned_by.'</a> </td>
+		        	<td> <a type="button" href="'.base_url().'User/view/'.str_replace('@','%40',$locker->assigned_by).'" class="btn btn-warning btn-block">'.$locker->unassigned_by.'</a> </td>
+		        	
+		        	<td> <a type="button" href="'.base_url().'Locker/view/'.$locker->id.'" class="btn btn-info btn-block"> View locker '.$locker->locker_no.'</a> </td>
+		        	</tr>';
+		    	}
+		    	?>
 		    </tbody>
 		</table>
+	</div>
 	</div>
 	
 </div>

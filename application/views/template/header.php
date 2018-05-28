@@ -104,7 +104,7 @@
                         </li>
                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Lockers</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url(); ?>Locker/remove_locker_list">Remove from list</a></li>
+                                <li><a href="<?php echo base_url(); ?>Locker/remove_locker">Remove locker</a></li>
                                <!--  <li><a href="<?php echo base_url(); ?>Locker/remove_locker_csv">Remove from CVS file</a></li> -->
                             </ul>
                         </li> 
@@ -143,9 +143,10 @@
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">System</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url(); ?>System/">New Plant</a></li>
-                                <li><a href="<?php echo base_url(); ?>System/">New Team</a></li>
-                                <li><a href="<?php echo base_url(); ?>System/">Restore</a></li>
+                                <li><a href="<?php echo base_url(); ?>System/add_plant">New Plant</a></li>
+                                <li><a href="<?php echo base_url(); ?>System/add_team">New Team</a></li>
+                                <li><a href="<?php echo base_url(); ?>System/add_shift">New Shift</a></li>
+                                <li><a href="<?php echo base_url(); ?>System/restore">Restore</a></li>
                             </ul>
                         </li>
 
