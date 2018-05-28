@@ -110,7 +110,8 @@ else echo
 <div class="card">
 	<h4 class="card-title">Locker Owner History</h4>
 	<div class="card-body">
-		<table id="owner_history_table" class="display">
+		<div class="table-responsive">
+		<table id="owner_history_table" class="table">
 		    <thead>
 		        <tr>
 		            <th>EPF no</th>
@@ -144,5 +145,6 @@ else echo
 		        ?>
 		    </tbody>
 		</table>
+	</div>
 	</div>
 </div>

@@ -105,11 +105,33 @@ class Locker extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    public function remove_locker_list()
+    public function remove_locker()
     {
-        $data['page_title'] = 'Title';
+        if(isset($_POST['locker_id']))
+        {
+            $locker = $this->Locker_model->get_locker_by_id($_POST['locker_id']);
+            $result = $this->Locker_model->remove_locker($_POST['locker_id']);
+            if($result == true)
+            {
+                $data['success'] = "Removed Locker <strong>".$locker->locker_no."</strong> in plant <strong>".$locker->plant."</strong> successfully";
+            } else {
+                $data['error'] = "Failed to removed Locker <strong>".$locker->locker_no."</strong> in plant <strong>".$locker->plant."</strong>";
+            }
+        }
+        $data['data_tables'] = array('locker_table');
+        $data['plants'] = $this->Locker_model->get_all_plants();
+        if(isset($_GET['filter_results']))
+        {
+            $data['lockers'] = $this->Locker_model->get_filtered_lockers($_GET['status'], $_GET['locker_no'], $_GET['plant']);
+            $data['filters'] = $_GET;
+
+        } else 
+        {
+            $data['lockers'] = $this->Locker_model->get_all_lockers();
+        }
+        $data['page_title'] = 'Remove Lockers';
         $this->load->view('template/header',$data);
-        $this->load->view('locker/remove_locker_list',$data);
+        $this->load->view('locker/remove_locker',$data);
         $this->load->view('template/footer');
     }
 }

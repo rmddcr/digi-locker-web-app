@@ -3,7 +3,8 @@
         <h4>Assgine Employee</h4>
     </div>
     <div class="card-body">
-		<table id="employee_table" class="display">
+    	<div class="table-responsive">
+		<table id="employee_table" class="table">
 		    <thead>
 		        <tr>
 		            <th>EPF no</th>
@@ -31,5 +32,6 @@
 		        ?>
 		    </tbody>
 		</table>
+	</div>
 	</div>
 </div>

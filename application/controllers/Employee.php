@@ -8,6 +8,7 @@ class Employee extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Employee_model');
+        $this->load->model('Locker_model');
     }
 
     //list all employees
@@ -37,13 +38,11 @@ class Employee extends CI_Controller
     //view employee details
     public function view($employee_id)
     {
-        $data['page_title'] = 'View Employee Details';
         $data['data_tables'] = array('lockers_histroy_table');
         $data['employee'] = $this->Employee_model->get_employee_by_id($employee_id);
         $data['locker'] = $this->Employee_model->get_employee_current_locker($employee_id);
         $data['locker_history'] = $this->Employee_model->get_employee_locker_history($employee_id);
-        $data['debug'] = $data['locker'];
-        //$data['debug'] = $data['locker_history'];
+        $data['page_title'] = 'Employee : <strong>'.$data['employee']->name.'</strong>';
         $this->load->view('template/header',$data);
         $this->load->view('employee/view_employee',$data);
         $this->load->view('template/footer');
@@ -51,29 +50,62 @@ class Employee extends CI_Controller
     //add new employee to the system
     public function new_employee()
     {
-        $this->form_validation->set_rules('epf_no', 'Employee Number', 'required');
-        $this->form_validation->set_rules('name', 'Employee Name', 'required');
+        $data['shifts'] = $this->Employee_model->get_all_shifts();
+        $data['teams'] = $this->Employee_model->get_all_teams();
+        $data['plants'] = $this->Employee_model->get_all_plants();
+        $data['page_title'] = 'Add Employee';
+        if(isset($_POST['new_employee']))
+        {
+            $result = $this->Employee_model->add_employee($_POST['epf_no'], $_POST['name'], $_POST['plant'], $_POST['team'], $_POST['shift']);
+            if($result['status'] == 'success')
+            {
+                $data['success'] = "Successfully added employee";
+                redirect('Employee/assign_locker/'.$result['employee_id']);
 
-        if ($this->form_validation->run() === FALSE) {
-            $data['page_title'] = 'Add employee';
-            $data['results_array']=$this->form_validation->run() === TRUE ;
-            $this->load->view('template/header',$data);
-            $this->load->view('employee/new_employee_one',$data);
-            $this->load->view('template/footer');
-
-        }else{
-            $this->Employee_model->add_employee($_POST['epf_no'], $_POST['name'], $_POST['team'], $_POST['shift_group'], $_POST['section_id']);
-
-                redirect("Employee/view/".$_POST['epf_no']);
+            } else {
+                $data['error'] = $result['error'];
             }
+        }
+        $this->load->view('template/header',$data);
+        $this->load->view('employee/new_employee_one',$data);
+        $this->load->view('template/footer');
     }
 
     public function assign_locker($employee_id)
     {
-        $data['page_title'] = 'Title';
+        $data['employee'] = $this->Employee_model->get_employee_by_id($employee_id);
+        //$data['page_title'] = 'Assigne Locker to <strong>'.$data['employee']->name.'</strong> EPF no : <strong>'.$data['employee']->epf_no.'</strong> Plant : <strong>'.$data['employee']->plant.'</strong> Shift : <strong>'.$data['employee']->shift.'</strong> Team : <strong>'.$data['employee']->team.'</strong>';
+        $data['page_title'] = 'Assigne Locker to <strong>'.$data['employee']->name.'</strong>';
+        if($data['employee']->has_locker == 1)
+        {
+            redirect('Employee/view/'.$employee_id );
+        }
+
+        if(isset($_POST['locker_id']))
+        {
+            $result = $this->Locker_model->change_locker_state("assign", $_POST['locker_id'], $_SESSION['user']['username'], $employee_id);
+            if($result == true)
+            {
+                redirect('Employee/view/'.$employee_id );
+            } else {
+                $data['error'] = "Unable to assigne locker : <strong>".$_POST['locker_id']."</strong> to Employee with EPF no : <strong>".$employee_id."</strong>";
+            }
+        }
+
+        $data['lockers'] = $this->Locker_model->get_filtered_lockers("free", "", $data['employee']->plant_id);
+        $data['data_tables'] = array('locker_table');
+        //$data['debug'] = $data['employee'];
         $this->load->view('template/header',$data);
         $this->load->view('employee/assign_locker',$data);
         $this->load->view('template/footer');
+    }
+
+    public function edit($employee_id)
+    {
+    }
+
+    public function delete($employee_id)
+    {
     }
 
     //remive employee as a list

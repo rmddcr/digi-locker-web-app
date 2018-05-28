@@ -88,6 +88,10 @@ class Locker_model extends CI_Model{
             $query1 = $this->db->query($query1);
             if($query1 != 1) return false;
 
+            $query = 'UPDATE employee SET has_locker = FALSE WHERE epf_no = '.$owner->employee_epf_no;
+            $query = $this->db->query($query);
+            if(!$query) return false;
+
             $query = 'DELETE FROM employee_has_locker WHERE locker_id = '.$locker_id;
             $query = $this->db->query($query);
             if(!$query) return false;
@@ -101,6 +105,10 @@ class Locker_model extends CI_Model{
             $query = 'INSERT INTO employee_has_locker(employee_epf_no,locker_id,assigned_by) VALUES ('.$employee_id.' ,'.$locker_id.', "'.$user.'")';
             $query = $this->db->query($query);
             if($query != 1) return false;
+
+            $query = 'UPDATE employee SET has_locker = TRUE WHERE epf_no = '.$employee_id;
+            $query = $this->db->query($query);
+            if(!$query) return false;
             
             $query = 'UPDATE locker SET status = "in_use", status_changed_time= "'.date('Y-m-d H:i:s',time()).'",status_changed_by = "'.$user.'" WHERE id = '.$locker_id;
             $query = $this->db->query($query);
@@ -123,11 +131,50 @@ class Locker_model extends CI_Model{
         }
     }
 
-    public function add_new_locker($locker_no, $plant, $user)
+    function add_new_locker($locker_no, $plant, $user)
     {
         $query = 'INSERT into locker(locker_no, plant_id, status_changed_by) VALUES ('.$locker_no.', '.$plant.', "'.$user.'")';
         $query = $this->db->query($query);
         if($query != 1) return false;
+
+        if ($this->db->trans_status() === FALSE)
+        {
+                $this->db->trans_rollback();
+                return false;
+        }
+        else
+        {
+                $this->db->trans_commit();
+                return true;
+        }
+    }
+
+    function remove_locker($locker_id)
+    {
+        $this->db->trans_begin();
+        $query = 'DELETE FROM employee_has_locker_history WHERE locker_id = '.$locker_id;
+        $query = $this->db->query($query);
+
+        $query = 'SELECT employee_epf_no FROM employee_has_locker WHERE locker_id = '.$locker_id;
+        $query = $this->db->query($query);
+        $owner = $query->row();
+
+        if(isset($owner))
+        {
+            $query = 'DELETE FROM employee_has_locker WHERE locker_id = '.$locker_id;
+            $query = $this->db->query($query);
+            if(!$query) return false;
+
+            $query = 'UPDATE employee SET has_locker = FALSE WHERE epf_no = '.$owner->employee_epf_no;
+            $query = $this->db->query($query);
+            if(!$query) return false;
+        }
+
+        $query = 'DELETE FROM locker WHERE id = '.$locker_id;
+        $query = $this->db->query($query);
+        if(!$query) return false;
+
+
 
         if ($this->db->trans_status() === FALSE)
         {
