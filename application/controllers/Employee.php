@@ -111,6 +111,25 @@ class Employee extends CI_Controller
     //remive employee as a list
     public function remove_employee_csv()
     {
+        if(isset($_POST['remove_employees']))
+        {
+            $data['data_tables'] = array('deleted');
+            $result = $this->Employee_model->remove_employees_csv("cvs_file_remove_emp");
+            if($result['status'] == 'failed' || !isset($result['end']))
+                $data['error'] = $result['error'];
+            else
+                $data['success'] = "Successfully removed employees";
+            
+            if($result['errors'] > 0){
+                $data['warning'] = "There were <strong>".$result['errors']."</strong> formatting errors in the CVS file";
+                array_push($data['data_tables'], 'warnings');
+            }
+            $data['warrnings'] = $result['error_rows'];
+            $data['warrning_count'] = $result['errors'];
+            $data['inserted_rows'] = $result['entered_rows'];
+            $data['read_rows'] = $result['row'];
+            $data['deleted'] = $result['deleted'];
+        }
         $data['page_title'] = 'Title';
         $this->load->view('template/header',$data);
         $this->load->view('employee/remove_employee_csv',$data);

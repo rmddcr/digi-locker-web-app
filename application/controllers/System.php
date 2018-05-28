@@ -78,18 +78,23 @@ class System extends CI_Controller
         {
             
             $result = $this->System_model->restore("cvs_file", $_POST['plant']);
-            if($result['status'] == 'failed')
-                echo $result['error'];
+            if($result['status'] == 'failed' || !isset($result['end']))
+                $data['error'] = $result['error'];
             else
-                echo var_dump($result);
-            //$data['debug'] = $result;
-        }else
-        {
+                $data['success'] = "Successfully restored the system";
+            
+            if($result['errors'] > 0){
+                $data['warning'] = "There were <strong>".$result['errors']."</strong> formatting errors in the CVS file";
+                $data['data_tables'] = array('warnings');
+            }
+            $data['warrnings'] = $result['error_rows'];
+            $data['warrning_count'] = $result['errors'];
+            $data['inserted_rows'] = $result['entered_rows'];
+            $data['read_rows'] = $result['row'];
+        }
+        
             $this->load->view('template/header',$data);
         $this->load->view('system/restore_system_csv',$data);
         $this->load->view('template/footer',$data);
-
-        }
-        
     }
 }
