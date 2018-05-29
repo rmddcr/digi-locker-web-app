@@ -275,7 +275,6 @@ class Employee extends CI_Controller
         {
             header("Content-Type: image/jpeg");
             echo $image->image;
-            //echo base64_decode($image->image); 
         }
         else
         {
