@@ -75,7 +75,6 @@
                             <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url(); ?>assets/images/users/5.jpg" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
-                                    <li><a href="#"><i class="ti-user"></i> Profile</a></li>
                                     <li><a href="<?php echo base_url();?>logout"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
@@ -94,61 +93,97 @@
                     <ul id="sidebarnav">
 
                         <li class="nav-devider"></li>
-                        <li class="nav-label">Lockers</li>
-                        <li> <a href="<?php echo base_url(); ?>Locker/" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">All Lockers</span></a></li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">New Lockers</span></a>
+                    <?php
+                    if(isset($_SESSION['user']['access']['all_lockers']) || $_SESSION['user']['privilage_level'] == '1')
+                    {
+                        echo 
+                        '<li class="nav-label">Lockers</li>
+                        <li> <a href="'.base_url().'Locker/" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">All Lockers</span></a>
+                        </li>';
+                    }
+                    if(isset($_SESSION['user']['access']['new_lockers']) || $_SESSION['user']['privilage_level'] == '1')
+                    {
+                        echo 
+                        '<li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">New Lockers</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url(); ?>Locker/new_locker">Add one</a></li>
-                                <!-- <li><a href="<?php echo base_url(); ?>Locker/new_locker_bulck">Add bulk</a></li> -->
+                                <li><a href="'.base_url().'Locker/new_locker">Add one</a></li>
+                                <!-- <li><a href="'.base_url().'Locker/new_locker_bulck">Add bulk</a></li> -->
                             </ul>
-                        </li>
-                       <li> <a class="has-arrow  "  aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Lockers</span></a>
+                        </li>';
+                    }
+                    if(isset($_SESSION['user']['access']['remove_lockers']) || $_SESSION['user']['privilage_level'] == '1')
+                    {
+                        echo 
+                        '<li> <a class="has-arrow  "  aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Lockers</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url(); ?>Locker/remove_locker">Remove locker</a></li>
-                               <!--  <li><a href="<?php echo base_url(); ?>Locker/remove_locker_csv">Remove from CVS file</a></li> -->
+                                <li><a href="'.base_url().'Locker/remove_locker">Remove locker</a></li>
                             </ul>
-                        </li> 
-
-                        <li class="nav-devider"></li>
+                        </li>';
+                    }
+                    if(isset($_SESSION['user']['access']['all_employee']) || $_SESSION['user']['privilage_level'] == '1')
+                    {
+                        echo 
+                        '<li class="nav-devider"></li>
                         <li class="nav-label">Employees</li>
-                        <li> <a href="<?php echo base_url(); ?>Employee/" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">All Employees</span></a></li>
-
-                        <li> <a href="<?php echo base_url(); ?>Employee/new_employee" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">New Employee</span></a></li>
-                        <!-- <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">New Employee</span></a>
+                        <li> <a href="'.base_url().'Employee/" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">All Employees</span></a>
+                        </li>';
+                    }
+                    if(isset($_SESSION['user']['access']['new_employee']) || $_SESSION['user']['privilage_level'] == '1')
+                    {
+                        echo 
+                        '<li> <a href="'.base_url().'Employee/new_employee" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">New Employee</span></a>
+                        </li>';
+                    }
+                    if(isset($_SESSION['user']['access']['remove_employee']) || $_SESSION['user']['privilage_level'] == '1')
+                    {
+                        echo 
+                        '<li> <a class="has-arrow  " aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Employee</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url(); ?>Employee/new_employee">Add one</a></li>
-                                <li><a href="<?php echo base_url(); ?>Employee/new_employee_bulck">Add bulk</a></li>
+                                <li><a href="'.base_url().'Employee/remove_employee_csv">Remove from CVS file</a>
+                                </li>
                             </ul>
-                        </li> -->
-                        <li> <a class="has-arrow  " aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Employee</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <!-- <li><a href="<?php echo base_url(); ?>Employee/remove_employee_list">Remove from list</a></li> -->
-                                <li><a href="<?php echo base_url(); ?>Employee/remove_employee_csv">Remove from CVS file</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-devider"></li>
+                        </li>';
+                    }
+                    if(isset($_SESSION['user']['access']['users']) || $_SESSION['user']['privilage_level'] == '1')
+                    {
+                        echo 
+                        '<li class="nav-devider"></li>
                         <li class="nav-label">Users</li>
                         <li> <a class="has-arrow  " href="" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Users</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url(); ?>User/">List Users</a></li>
-                                <li><a href="<?php echo base_url(); ?>User/new_user">New User</a></li>
+                                <li><a href="'.base_url().'User/">List Users</a></li>
+                                <li><a href="'.base_url().'User/new_user">New User</a></li>
                             </ul>
-                        </li>
-                        <li> <a class="has-arrow  "  aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Roles</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url(); ?>Role/">List Roles</a></li>
-                                <li><a href="<?php echo base_url(); ?>Role/new_role">New Role</a></li>
-                            </ul>
-                        </li>
+                        </li>';
+                    }
+                    if(isset($_SESSION['user']['access']['system']) || isset($_SESSION['user']['access']['restore']) || $_SESSION['user']['privilage_level'] == '1')
+                    {
+                        echo '
                         <li> <a class="has-arrow  " aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">System</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url(); ?>System/add_plant">New Plant</a></li>
-                                <li><a href="<?php echo base_url(); ?>System/add_team">New Team</a></li>
-                                <li><a href="<?php echo base_url(); ?>System/add_shift">New Shift</a></li>
-                                <li><a href="<?php echo base_url(); ?>System/restore">Restore</a></li>
-                            </ul>
-                        </li>
+                            <ul aria-expanded="false" class="collapse">';
+
+                            if(isset($_SESSION['user']['access']['system']) || $_SESSION['user']['privilage_level'] == '1')
+                            {
+                                echo 
+                                '<li><a href="'.base_url().'System/add_plant">New Plant</a></li>
+                                <li><a href="'.base_url().'System/add_team">New Team</a></li>
+                                <li><a href="'.base_url().'System/add_shift">New Shift</a></li>';
+                            }
+                            if(isset($_SESSION['user']['access']['restore']) || $_SESSION['user']['privilage_level'] == '1')
+                            {
+                                echo '<li><a href="'.base_url().'System/restore">Restore</a></li>';
+                            }
+                        
+
+                        echo 
+                            '</ul>
+                        </li>';
+                    }
+
+
+
+                    ?>
+                        
 
                     </ul>
                 </nav>

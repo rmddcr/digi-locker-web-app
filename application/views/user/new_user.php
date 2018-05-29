@@ -7,6 +7,7 @@
                     <th>Name</th>
                     <th>Role</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -16,7 +17,7 @@
                     <form method="post" action="'.base_url().'User/new_user" >';
                     echo '<td>'.$user['user_name'].'</td>
                         <td>
-                            <select class="selectize" name="role">';
+                            <select class="selectize" name="role_id">';
                                 foreach ($roles as $role) 
                                 {
                                     echo '<option value="'.$role['id'].'">'.$role['role_name'].'</option>';    
@@ -25,7 +26,11 @@
                         </td>
                         
                         <td>
-                            <button type="submit" name="user" value="'.str_replace('@','%40',$user['user_name']).'" class="btn btn-warning btn-block">Assign Role</button>
+                            <button type="submit" name="user" value="'.addslashes($user['user_name']).'" class="btn btn-warning btn-block">Assign Role</button>
+                        </td>
+
+                        <td>
+                            <button type="submit" name="delete" value="'.addslashes($user['user_name']).'" class="btn btn-danger btn-block">Delete</button>
                         </td>';
                     echo '
                     </form>

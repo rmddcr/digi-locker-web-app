@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Digi Locker | Login</title>
+    <title>Digi Locker | Reset password</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -29,21 +29,14 @@
 </head>
 <body>
 
-<?php echo form_open('login'); ?>
-Test users : <br>
-<strong>Username : Password</strong> <br>
-root : root <br>
-admin : admin <br>
-enterer : enterer <br>
-manager : manager <br>
+<?php echo form_open('password_rest'); ?>
+
 <div class="limiter">
-
     <div class="container-login100">
-
         <div class="wrap-login100">
             <form class="login100-form validate-form">
 					<span class="login100-form-title p-b-26">
-						Welcome
+						Welcome request password reset
 					</span>
 
 
@@ -56,46 +49,49 @@ manager : manager <br>
                     <input class="input100" type="text" name="email" required>
                     <span class="focus-input100" data-placeholder="Username"></span>
                 </div>
-
-                <div class="wrap-input100 validate-input" data-validate="Enter password">
-						<span class="btn-show-pass">
-							<i class="zmdi zmdi-eye"></i>
-						</span>
-                    <input class="input100" type="password" name="pass" required>
-                    <span class="focus-input100" data-placeholder="Password"></span>
-                </div>
+                
+                <?php echo validation_errors(); ?>
                 <?php 
-                $error = $this->session->flashdata('error');
                 if(isset($error))
                     { 
                         echo '<div class="text-center p-t-70">
                                         <span class="txt1">
-                                            Invalid Username Password combinantion
+                                            Unable to request password change check your username
                                         </span>
-
-                                    <a class="txt2" href="'.base_url('password_rest').'">
-                                        Reset Password
-                                    </a>
                                 </div>'; 
 
                     }
                 ?>
+
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
                         <button type="submit" class="login100-form-btn">
-                            Login
+                           Requesr Password Reset
                         </button>
                     </div>
                 </div>
+                <script>
+                    var check = function() {
+                        if (document.getElementById('password').value ==
+                            document.getElementById('confirm_password').value) {
+                            document.getElementById('message1').style.color = 'green';
+                            document.getElementById('message2').style.color = 'green';
+                          //  document.getElementById('message').innerHTML = '&#11044;';
+                        } else {
+                            document.getElementById('message').style.color = 'red';
+                          //  document.getElementById('message').innerHTML = '&#11044;';
+                        }
+                    }
+                </script>
 
                 <div class="text-center p-t-70">
 						<span class="txt1">
-							Don’t have an account?
+							Already have a  account?
 						</span>
 
-                    <a class="txt2" href="<?php echo base_url('signup'); ?>">
-                        Sign Up
+                    <a class="txt2" href="<?php echo base_url('login'); ?>">
+                        Login
                     </a>
                 </div>
             </form>

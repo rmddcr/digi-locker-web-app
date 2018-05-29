@@ -12,6 +12,7 @@
                 <div class="text-center">
                     <button type="submit" name="remove_employees" class="btn btn-success waves-effect waves-light col-sm-4">Remove Employees</button>
                 </div>
+                <a href="<?php echo base_url(); ?>assets/sample_templates/remove_employees.csv" class="pull-right btn btn-info" download>Download CVS file Template</a>
             </form>
         </div>
     </div>

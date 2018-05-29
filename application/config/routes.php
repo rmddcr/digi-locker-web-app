@@ -53,5 +53,6 @@ $route['default_controller'] = 'Main';
 $route['login'] = "Main/login";
 $route['logout'] = "Main/logout";
 $route['signup'] = 'Main/signup';
+$route['password_rest'] = 'Main/password_rest';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

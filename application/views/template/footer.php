@@ -1,7 +1,7 @@
             </div>
             <!-- End Container fluid  -->
             <!-- footer -->
-            <footer class="footer"> © 2018 All rights reserved. Template designed by <a href="https://colorlib.com">Colorlib</a></footer>
+            <footer class="footer"> © 2018 All rights reserved. Template designed by <a href="https://colorlib.com">Colorlib</a> Powered by <strong> </strong><a href="unicornpack.github.io">Unicorn Pack</a></footer>
             <!-- End footer -->
         </div>
         <!-- End Page wrapper  -->

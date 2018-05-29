@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login V2</title>
+    <title>Digi Locker | Sign up</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="<?php echo base_url('assets/login_assets/'); ?>images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/images/favicon.png"/>
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/login_assets/'); ?>vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -41,12 +41,13 @@
 
 
                 <span class="login100-form-title p-b-48"> <img src="<?php echo base_url('assets/'); ?>images/logo.png">
+                    <img src="<?php echo base_url('assets/'); ?>images/logo-text.png">
 						<i class="zmdi "> </i>
 					</span>
 
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
                     <input class="input100" type="text" name="email" required>
-                    <span class="focus-input100" data-placeholder="Email"></span>
+                    <span class="focus-input100" data-placeholder="Username"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
@@ -67,8 +68,19 @@
                     <span class="focus-input100" data-placeholder="Confirm Password "></span>
 
                 </div>
+                <?php echo validation_errors(); ?>
+                <?php 
+                $error = $this->session->flashdata('error');
+                if(isset($error))
+                    { 
+                        echo '<div class="text-center p-t-70">
+                                        <span class="txt1">
+                                            Unable to signup
+                                        </span>
+                                </div>'; 
 
-
+                    }
+                ?>
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
