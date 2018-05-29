@@ -93,11 +93,11 @@ class User_model extends CI_Model{
             'password_hash' => $password_hash,
             'password_salt'  => $password_salt,
             'request_password_reset'  => 0,
-            'password_reset' => 0,
-            'user_name' => $username
+            'password_reset' => 0
         );
 
-        $query = $this->db->replace('user', $data);
+        $this->db->where('user_name', $username);
+        $query = $this->db->update('user', $data);
         if(!$query) return false;
 
         return true;

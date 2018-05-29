@@ -160,7 +160,26 @@ class Employee extends CI_Controller
         {
             if(isset($_SESSION['user']['access']['edit_employee']) || $_SESSION['user']['privilage_level'] == '1')
             {
+                $data['shifts'] = $this->Employee_model->get_all_shifts();
+                $data['teams'] = $this->Employee_model->get_all_teams();
+                $data['plants'] = $this->Employee_model->get_all_plants();
+                if(isset($_POST['new_employee']))
+                {
+                    $result = $this->Employee_model->update_employee($employee_id, $_POST['name'], $_POST['plant'], $_POST['team'], $_POST['shift']);
+                    if($result['status'] == 'success')
+                    {
+                        $data['success'] = "Successfully updated employee";
+                        redirect('Employee/view/'.$employee_id );
 
+                    } else {
+                        $data['error'] = $result['error'];
+                    }
+                }
+                $data['employee'] = $this->Employee_model->get_employee_by_id($employee_id);
+                $data['page_title'] = 'Edite employee <strong>'.$data['employee']->name.'</strong>';
+                $this->load->view('template/header',$data);
+                $this->load->view('employee/edit_employee',$data);
+                $this->load->view('template/footer');
             } else {
                 $data['page_title'] = 'ACCESS DENIED';
                 $this->load->view('template/header',$data);
@@ -178,6 +197,24 @@ class Employee extends CI_Controller
         {
             if(isset($_SESSION['user']['access']['remove_employee']) || $_SESSION['user']['privilage_level'] == '1')
             {
+                if(isset($_POST['yes']))
+                {
+                    $result = $this->Employee_model->remove_employee($employee_id);
+                    if($result['status'] == 'failed')
+                        $data['error'] = $result['error'];
+                    else
+                        $data['success'] = "Successfully removed employees";
+                        redirect('Employee');
+                }
+                if(isset($_POST['no']))
+                {
+                    redirect('Employee/view/'.$employee_id );
+                }
+                $data['employee'] = $this->Employee_model->get_employee_by_id($employee_id);
+                $data['page_title'] = 'Delete employee <strong>'.$data['employee']->name.'</strong>';
+                $this->load->view('template/header',$data);
+                $this->load->view('employee/remove_employee',$data);
+                $this->load->view('template/footer');
 
             } else {
                 $data['page_title'] = 'ACCESS DENIED';

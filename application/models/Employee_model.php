@@ -131,6 +131,59 @@ class Employee_model extends CI_Model{
         }        
     }
 
+    function update_employee($epf_no, $name, $plant_id, $team_id, $shift_id)
+    {
+        $result['status'] = "failed";
+        $result['error'] = "Failed to update employee due to <strong> unknown error </strong>";
+        
+        $this->db->trans_begin();
+
+        $query = 'SELECT epf_no FROM employee WHERE epf_no = '.addslashes($epf_no);
+        $query = $this->db->query($query);
+        $employee = $query->row();
+        if(!isset($employee))
+        {
+            $result['error'] = "Failed to update employee due to <strong> Employee with EPF number ".$epf_no." has been removed</strong>";
+            return $result; 
+        }
+
+        $query = 'SELECT t.id FROM team as t JOIN plant as p ON t.plant_id = p.id WHERE t.id = '.$team_id.' AND p.id = '.$plant_id;
+        $query = $this->db->query($query);
+        $plant = $query->row();
+        if(!isset($plant))
+        {   
+            $query = 'SELECT name FROM plant where id = '.$plant_id;
+            $query = $this->db->query($query);
+            $plant = $query->row();
+            $result['error'] = "Failed to update employee due to <strong> Team selected is not in Plant ".$plant->name."</strong>";
+            return $result; 
+        }
+
+        $data = array('name' => $name,
+                    'team_id' => $team_id,
+                    'shift_id' => $shift_id
+                    );
+        $this->db->where('epf_no', $epf_no);
+        $query = $this->db->update('employee', $data);
+        if(!$query) return $result;
+
+
+
+        if ($this->db->trans_status() === FALSE)
+        {
+                $this->db->trans_rollback();
+                $result['error'] = "Failed to update employee due to <strong> Database error </strong>";
+                return $result;
+        }
+        else
+        {
+                $this->db->trans_commit();
+                $result['status'] = "success";
+                $result['employee_id'] = $epf_no;
+                return $result;
+        }        
+    }
+
     function remove_employees_csv($file_name)
     {
         //var_dump($_FILES[$file_name]);
@@ -257,6 +310,61 @@ class Employee_model extends CI_Model{
             $result['error'] = 'Failed to remove employees <strong> Cannot open the file </strong>';
         }
 
+        return $result;
+    }
+
+    function remove_employee($epf_no)
+    {
+        $result['status'] = 'failed';
+        $result['error'] = 'Failed to remove employees <strong> Unknown error </strong>';
+
+        
+        //check locker already in the system
+        $query = 'SELECT epf_no FROM employee WHERE epf_no = '.$epf_no;
+        $query = $this->db->query($query);
+        $query = $query->row();
+        if(!isset($query))
+        {
+            $result['error'] = "Employee with EPF number <strong>".$epf_no."</strong> in not in the system";
+            return $result;
+        }
+
+        //check assgined locker
+        $query = 'SELECT locker_id FROM employee_has_locker WHERE employee_epf_no = '.$epf_no;
+        $query = $this->db->query($query);
+        $query = $query->row();
+        if(isset($query))
+        {   
+            //free assigned locker
+            $locker_id = $query->locker_id;
+            $query = 'UPDATE locker SET status = "free" WHERE id = '.$locker_id;
+            $query = $this->db->query($query);
+            if(!$query) {$result['error']="Failed to update locker status to FREE"; return $result;}
+
+            $query = 'DELETE FROM employee_has_locker WHERE employee_epf_no = '.$epf_no;
+            $query = $this->db->query($query);
+            if(!$query) {$result['error']="Failed to delete record employee locker"; return $result;}
+        }
+
+        //check employee locker histroy
+        $query = 'SELECT locker_id FROM employee_has_locker_history WHERE employee_epf_no = '.$epf_no;
+        $query = $this->db->query($query);
+        $query = $query->row();
+        if(isset($query))
+        {
+            //delete employee locker histroy
+            $query = 'DELETE FROM employee_has_locker_history WHERE employee_epf_no = '.$epf_no;
+            $query = $this->db->query($query);
+            if(!$query) {$result['error']="Failed to delete records employee locker history"; return $result;}
+        }
+
+        //delete employee
+        $query = 'DELETE FROM employee WHERE epf_no = '.$epf_no;
+            $query = $this->db->query($query);
+            if(!$query) {$result['error']="Failed to delete employee"; return $result;}
+            
+
+        $result['status'] = "success";
         return $result;
     }
 
