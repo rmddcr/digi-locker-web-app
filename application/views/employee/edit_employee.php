@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
         <div class="form-horizontal">
-            <form method="post" action="<?php echo base_url(); ?>Employee/edit/<?php echo $employee->epf_no?>">
+            <form enctype="multipart/form-data" method="post" action="<?php echo base_url(); ?>Employee/edit/<?php echo $employee->epf_no?>">
 
                 <div class="form-group row">
                     <label class="control-label text-right col-sm-2">EPF Number</label>
@@ -44,6 +44,12 @@
                         }
                     ?>
                 </select>
+                </div>
+
+                <div class="form-group row">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="5242880" />
+                    <label class="control-label text-right col-sm-2">Upload image(max 5MB) :</label> 
+                    <input class="col-sm-10" name="image_file" type="file" />
                 </div>
 
                 <div class="text-center">

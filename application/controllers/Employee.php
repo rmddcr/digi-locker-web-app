@@ -273,7 +273,9 @@ class Employee extends CI_Controller
         $image = $this->Employee_model->get_image($employee_id);
         if(isset($image))
         {
-            echo 'BLOB';
+            header("Content-Type: image/jpeg");
+            echo $image->image;
+            //echo base64_decode($image->image); 
         }
         else
         {

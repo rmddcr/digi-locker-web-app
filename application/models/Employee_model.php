@@ -115,7 +115,27 @@ class Employee_model extends CI_Model{
         if($query != 1) return $result;
 
 
+        if($_FILES['image_file']['size'] > 0)
+        {
+            $this->db->where('epf_no', $epf_no);
+            $img = $this->db->get('employee_picture');
+            $img = $img->row();
+    
+            $imgData = file_get_contents($_FILES['image_file']['tmp_name']);
+            $data = array('epf_no' => $epf_no, 'image'=>$imgData);
 
+            if(isset($img))
+            {
+                $res = $this->db->replace('employee_picture', $data);
+            } else {
+                $res = $this->db->insert('employee_picture', $data);
+            }
+            if(!$res)
+            {
+                $result['error'] = "Failed to update employee due to <strong> Failed upload image </strong>";
+                return $result; 
+            }
+        }
         if ($this->db->trans_status() === FALSE)
         {
                 $this->db->trans_rollback();
@@ -167,7 +187,27 @@ class Employee_model extends CI_Model{
         $query = $this->db->update('employee', $data);
         if(!$query) return $result;
 
+        if($_FILES['image_file']['size'] > 0)
+        {
+            $this->db->where('epf_no', $epf_no);
+            $img = $this->db->get('employee_picture');
+            $img = $img->row();
+    
+            $imgData = file_get_contents($_FILES['image_file']['tmp_name']);
+            $data = array('epf_no' => $epf_no, 'image'=>$imgData);
 
+            if(isset($img))
+            {
+                $res = $this->db->replace('employee_picture', $data);
+            } else {
+                $res = $this->db->insert('employee_picture', $data);
+            }
+            if(!$res)
+            {
+                $result['error'] = "Failed to update employee due to <strong> Failed upload image </strong>";
+                return $result; 
+            }
+        }
 
         if ($this->db->trans_status() === FALSE)
         {
