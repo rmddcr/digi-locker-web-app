@@ -5,7 +5,11 @@
 	<div class="card-body"> 
 		
 		<div class="row">
-			<div class="col-md-3 col-lg-3 " align="center"> <img alt="Employee name" src="<?php echo base_url(); ?>assets/images/avatar.jpg" class="img-circle img-responsive "> </div>
+			<div class="col-md-3 col-lg-3 " align="center"> 
+				
+				<img alt="Employee name" src="<?php echo base_url(); ?>Employee/picture/<?php echo $employee->epf_no; ?>" class="img-circle img-responsive "> 
+
+			</div>
 			
 			<div class=" col-md-9 col-lg-9 "> 
 				<table class="table table-user-information">

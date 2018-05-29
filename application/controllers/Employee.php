@@ -268,4 +268,17 @@ class Employee extends CI_Controller
         }
     }
 
+    public function picture($employee_id)
+    {
+        $image = $this->Employee_model->get_image($employee_id);
+        if(isset($image))
+        {
+            echo 'BLOB';
+        }
+        else
+        {
+            redirect(base_url().'assets/images/avatar.jpg');
+        }
+    }
+
 }

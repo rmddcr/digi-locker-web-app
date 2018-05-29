@@ -368,6 +368,12 @@ class Employee_model extends CI_Model{
         return $result;
     }
 
+    function get_image($employee_id)
+    {
+        $this->db->where('epf_no', $employee_id);
+        $image = $this->db->get('employee_picture');
+        return $image->row();
+    }
 
 }
 
