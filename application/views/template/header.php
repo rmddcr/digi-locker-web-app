@@ -102,7 +102,7 @@
                                 <!-- <li><a href="<?php echo base_url(); ?>Locker/new_locker_bulck">Add bulk</a></li> -->
                             </ul>
                         </li>
-                       <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Lockers</span></a>
+                       <li> <a class="has-arrow  "  aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Lockers</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url(); ?>Locker/remove_locker">Remove locker</a></li>
                                <!--  <li><a href="<?php echo base_url(); ?>Locker/remove_locker_csv">Remove from CVS file</a></li> -->
@@ -120,7 +120,7 @@
                                 <li><a href="<?php echo base_url(); ?>Employee/new_employee_bulck">Add bulk</a></li>
                             </ul>
                         </li> -->
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Employee</span></a>
+                        <li> <a class="has-arrow  " aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Employee</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <!-- <li><a href="<?php echo base_url(); ?>Employee/remove_employee_list">Remove from list</a></li> -->
                                 <li><a href="<?php echo base_url(); ?>Employee/remove_employee_csv">Remove from CVS file</a></li>
@@ -135,13 +135,13 @@
                                 <li><a href="<?php echo base_url(); ?>User/new_user">New User</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Roles</span></a>
+                        <li> <a class="has-arrow  "  aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Roles</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url(); ?>Role/">List Roles</a></li>
                                 <li><a href="<?php echo base_url(); ?>Role/new_role">New Role</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">System</span></a>
+                        <li> <a class="has-arrow  " aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">System</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url(); ?>System/add_plant">New Plant</a></li>
                                 <li><a href="<?php echo base_url(); ?>System/add_team">New Team</a></li>

@@ -1,40 +1,31 @@
-<?php var_dump($result_array);?>
-
-<?php foreach ($result_array as $row) : ?>
-
-    <div class="card">
-
-        <table id="lockers_current_table" class="display">
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+        <table id="user_table" class="table" style="width:100%">
             <thead>
-            <tr>
-
-                <th>Name</th>
-                <th>Role</th>
-                <th></th>
-
-            </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th></th>
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <td><?php echo $row['user_name'] ; ?></td>
-                <td><?php echo $row['role_name'] ; ?></td>
-                <td> <form action="<?php echo base_url()."User/view/".str_replace('@','%40',$row['user_name']);?>">
-                        <input type="submit"  class="btn btn-info m-b-10 m-l-5" value="View Info" />
-                    </form>
-
-                </td>
-
-
-
-            </tr>
+                <?php
+                foreach ($users as $user) {
+                    echo "<tr>";
+                    echo '<td>'.$user['user_name'].'</td>
+                        <td>'.$user['role_name'].'</td>
+                        <td>
+                            <a href="'.base_url().'User/view/'.str_replace('@','%40',$user['user_name']).'" class="btn btn-info btn-block">View Info</a>
+                        </td>';
+                    echo "</tr>";
+                }
+                ?>
             </tbody>
         </table>
     </div>
+    </div>
+</div>
 
 
-
-
-
-
-<?php endforeach;?>
 

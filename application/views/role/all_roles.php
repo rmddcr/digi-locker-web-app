@@ -1,27 +1,29 @@
-<?php var_dump($result_array[0]);?>
-
-<?php foreach ($result_array as $row) : ?>
-
-    <div class="card">
-
-
-        <table id="lockers_current_table" class="display">
-
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+        <table id="role_table" class="table" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Role</th>
+                    <th></th>
+                </tr>
+            </thead>
             <tbody>
-            <tr>
-                <td><?php echo $row['role_name'] ; ?></td>
-                <td><form action="<?php echo base_url()."User/view/";?>">
-                        <input type="submit"  class="btn btn-info m-b-10 m-l-5" value="Edit privileges" />
-                    </form>
-                </td>
-
-            </tr>
+                <?php
+                foreach ($roles as $role) {
+                    echo "<tr>";
+                    echo '<td>'.$role['role_name'].'</td>
+                        <td>
+                            <a href="'.base_url().'Role/view/'.$role['id'].'" class="btn btn-info btn-block">View Info</a>
+                        </td>';
+                    echo "</tr>";
+                }
+                ?>
             </tbody>
         </table>
-
-
     </div>
+    </div>
+</div>
 
 
-<?php endforeach;?>
 

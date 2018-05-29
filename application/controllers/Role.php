@@ -13,7 +13,8 @@ class Role extends CI_Controller
     public function index()
     {
         $data['page_title'] = 'Title';
-        $data['result_array']= $this->Role_model->get_all_roles();
+        $data['data_tables'] = array('role_table');
+        $data['roles']= $this->Role_model->get_all_roles();
         $this->load->view('template/header',$data);
         $this->load->view('role/all_roles',$data);
         $this->load->view('template/footer');
