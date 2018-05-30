@@ -23,6 +23,7 @@
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>assets/css/helper.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -98,13 +99,13 @@
                     {
                         echo 
                         '<li class="nav-label">Lockers</li>
-                        <li> <a href="'.base_url().'Locker/" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">All Lockers</span></a>
+                        <li> <a href="'.base_url().'Locker/" aria-expanded="false"><i class="fas fa-boxes"></i><span class="hide-menu">All Lockers</span></a>
                         </li>';
                     }
                     if(isset($_SESSION['user']['access']['new_lockers']) || $_SESSION['user']['privilage_level'] == '1')
                     {
                         echo 
-                        '<li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">New Lockers</span></a>
+                        '<li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-plus-square"></i><span class="hide-menu">New Lockers</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="'.base_url().'Locker/new_locker">Add one</a></li>
                                 <!-- <li><a href="'.base_url().'Locker/new_locker_bulck">Add bulk</a></li> -->
@@ -114,7 +115,7 @@
                     if(isset($_SESSION['user']['access']['remove_lockers']) || $_SESSION['user']['privilage_level'] == '1')
                     {
                         echo 
-                        '<li> <a class="has-arrow  "  aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Lockers</span></a>
+                        '<li> <a class="has-arrow  "  aria-expanded="false"><i class="fa fa-minus-square"></i><span class="hide-menu">Remove Lockers</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="'.base_url().'Locker/remove_locker">Remove locker</a></li>
                             </ul>
@@ -125,21 +126,21 @@
                         echo 
                         '<li class="nav-devider"></li>
                         <li class="nav-label">Employees</li>
-                        <li> <a href="'.base_url().'Employee/" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">All Employees</span></a>
+                        <li> <a href="'.base_url().'Employee/" aria-expanded="false"><i class="fa fa-address-book"></i><span class="hide-menu">All Employees</span></a>
                         </li>';
                     }
                     if(isset($_SESSION['user']['access']['new_employee']) || $_SESSION['user']['privilage_level'] == '1')
                     {
                         echo 
-                        '<li> <a href="'.base_url().'Employee/new_employee" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">New Employee</span></a>
+                        '<li> <a href="'.base_url().'Employee/new_employee" aria-expanded="false"><i class="fa fa-plus-square"></i><span class="hide-menu">New Employee</span></a>
                         </li>';
                     }
                     if(isset($_SESSION['user']['access']['remove_employee']) || $_SESSION['user']['privilage_level'] == '1')
                     {
                         echo 
-                        '<li> <a class="has-arrow  " aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Remove Employee</span></a>
+                        '<li> <a class="has-arrow  " aria-expanded="false"><i class="fa fa-minus-square"></i><span class="hide-menu">Remove Employee</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="'.base_url().'Employee/remove_employee_csv">Remove from CVS file</a>
+                                <li><a href="'.base_url().'Employee/remove_employee_csv"><i class="fas fa-file"></i>&nbsp;Remove from CVS file</a>
                                 </li>
                             </ul>
                         </li>';
@@ -149,29 +150,29 @@
                         echo 
                         '<li class="nav-devider"></li>
                         <li class="nav-label">Users</li>
-                        <li> <a class="has-arrow  " href="" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Users</span></a>
+                        <li> <a class="has-arrow  " href="" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Users</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="'.base_url().'User/">List Users</a></li>
-                                <li><a href="'.base_url().'User/new_user">New User</a></li>
+                                <li><a href="'.base_url().'User/"><i class="fa fa-list-ul"></i>&nbsp;List Users</a></li>
+                                <li><a href="'.base_url().'User/new_user"><i class="fa fa-user-plus"></i>&nbsp;New User</a></li>
                             </ul>
                         </li>';
                     }
                     if(isset($_SESSION['user']['access']['system']) || isset($_SESSION['user']['access']['restore']) || $_SESSION['user']['privilage_level'] == '1')
                     {
                         echo '
-                        <li> <a class="has-arrow  " aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">System</span></a>
+                        <li> <a class="has-arrow  " aria-expanded="false"><i class="fa fa-cogs"></i><span class="hide-menu">System</span></a>
                             <ul aria-expanded="false" class="collapse">';
 
                             if(isset($_SESSION['user']['access']['system']) || $_SESSION['user']['privilage_level'] == '1')
                             {
                                 echo 
-                                '<li><a href="'.base_url().'System/add_plant">New Plant</a></li>
-                                <li><a href="'.base_url().'System/add_team">New Team</a></li>
-                                <li><a href="'.base_url().'System/add_shift">New Shift</a></li>';
+                                '<li><a href="'.base_url().'System/add_plant"><i class="fas fa-building"></i>&nbsp;New Plant</a></li>
+                                <li><a href="'.base_url().'System/add_team"><i class="fas fa-people-carry"></i>&nbsp;New Team</a></li>
+                                <li><a href="'.base_url().'System/add_shift"><i class="far fa-clock"></i>&nbsp;New Shift</a></li>';
                             }
                             if(isset($_SESSION['user']['access']['restore']) || $_SESSION['user']['privilage_level'] == '1')
                             {
-                                echo '<li><a href="'.base_url().'System/restore">Restore</a></li>';
+                                echo '<li><a href="'.base_url().'System/restore"><i class="fas fa-wrench"></i>&nbsp;Restore</a></li>';
                             }
                         
 
