@@ -174,11 +174,18 @@
                             {
                                 echo '<li><a href="'.base_url().'System/restore"><i class="fas fa-wrench"></i>&nbsp;Restore</a></li>';
                             }
+
+
                         
 
                         echo 
                             '</ul>
                         </li>';
+                        echo
+                            '<li> <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxeFANMJTju5fzn6C0A0fTktWqeMWYZrlA7gTeIO0oIpRUMg/viewform?usp=sf_link" aria-expanded="false"><i class="fas fa-bug"></i><span class="hide-menu">Report bugs</span></a>
+                        </li>';
+
+
                     }
 
 
