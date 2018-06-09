@@ -18,7 +18,7 @@
 		  <div class="card button-list">
 		  	<?php
 		  	if($locker->status=='free') echo '<form method="post" action="'.current_url().'">
-		  										<a href="'.base_url().'Locker/assign/'.$locker->id.'" class="btn btn-success btn-rounded">Assign</a>
+		  										
 		  										<button name="state" value="broken" class="btn btn-danger btn-rounded" type="submit">Broken</button>
 		  										</form>';
 			else if($locker->status=='in_use') echo '<form method="post" action="'.current_url().'">
@@ -93,9 +93,9 @@ else if($locker->status == 'free') echo
 '<div class="card">
 	<h4 class="card-title">Locker Owner</h4>
 	<div class="card-body">
-	<a href="'.base_url().'Locker/assign/'.$locker->id.'" class="btn btn-success btn-rounded">Assign</a>
+	<p> Locker is not assigned to anyone </p>
 	</div>
-</div>' ; 
+</div>' ;
 else echo 
 '<div class="card">
 	<h4 class="card-title">Locker Owner</h4>
