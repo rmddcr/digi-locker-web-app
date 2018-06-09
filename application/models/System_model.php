@@ -114,7 +114,7 @@ class System_model extends CI_Model{
         		}
 
         		//skip if epf_no not given
-        		if($employee_epf_no=="" || $employee_epf_no=="#N/A" || !is_numeric($employee_epf_no))
+        		if($employee_epf_no=="" || preg_replace('/\s+/','',$employee_epf_no)=="#N/A" || !is_numeric($employee_epf_no))
         		{
         			continue;
         		}

@@ -18,13 +18,21 @@
 		  <div class="card button-list">
 		  	<?php
 		  	if($locker->status=='free') echo '<form method="post" action="'.current_url().'">
-		  										
-		  										<button name="state" value="broken" class="btn btn-danger btn-rounded" type="submit">Broken</button>
-		  										</form>';
-			else if($locker->status=='in_use') echo '<form method="post" action="'.current_url().'">
+		  										<div class="card button-list">
+		  											<textarea name="comment" class="" rows="3" placeholder="Comment for broken locker" required></textarea>
+		  											<button name="state" value="broken" class="btn btn-danger btn-rounded" type="submit">Broken</button>
+		  										</div>
+											</form>';
+			else if($locker->status=='in_use') echo '
+											<form method="post" action="'.current_url().'">
 		  										<button name="state" value="unassign" class="btn btn-info btn-rounded" type="submit">Unassign</button>
-		  										<button name="state" value="broken" class="btn btn-danger btn-rounded" type="submit">Broken</button>
-		  										</form>';
+		  									</form>
+		  									<form method="post" action="'.current_url().'">
+		  										<div class="card button-list">
+		  											<textarea name="comment" class="" rows="3" placeholder="Comment for broken locker" required></textarea>
+		  											<button name="state" value="broken" class="btn btn-danger btn-rounded" type="submit">Broken</button>
+		  										</div>
+											</form>';
 			else if($locker->status=='broken') echo '<form method="post" action="'.current_url().'">
 		  										<button name="state" value="fix" class="btn btn-primary btn-rounded" type="submit">Fix</button>
 		  										</form>';
@@ -40,6 +48,10 @@
 			  	<a class="btn btn-info" href="<?php echo base_url().'User/view/'.str_replace('@','%40',$locker->status_changed_by); ?>" > <?php echo $locker->status_changed_by;?></a>
 			  	on <?php echo $locker->status_changed_time; ?>
 		  	</p>
+		  	<br>
+			  	<p>
+			  		<strong>Comment : </strong> <?php if(isset($locker->comment)) echo  $locker->comment; else echo "No comment"; ?>
+			  	</p>
 		</div>
 	</div>
 </div>

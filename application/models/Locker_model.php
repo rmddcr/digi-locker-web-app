@@ -48,7 +48,7 @@ class Locker_model extends CI_Model{
 
     function get_locker_by_id($locker_id)
     {
-        $query = 'SELECT l.id, l.locker_no, l.status, l.status_changed_by, l.status_changed_time, p.name as plant, p.id as plant_id FROM locker as l JOIN plant as p ON l.plant_id = p.id WHERE l.id = '.$locker_id;
+        $query = 'SELECT l.id, l.locker_no, l.status, l.status_changed_by, l.status_changed_time, l.comment, p.name as plant, p.id as plant_id FROM locker as l JOIN plant as p ON l.plant_id = p.id WHERE l.id = '.$locker_id;
         $query = $this->db->query($query);
         return $query->row();
     }
@@ -74,7 +74,8 @@ class Locker_model extends CI_Model{
             }
 
         }else if($state == 'broken' || $state == 'locked'){//set state
-            $query = 'UPDATE locker SET status = "'.$state.'", status_changed_time= "'.date('Y-m-d H:i:s',time()).'",status_changed_by = "'.$user.'" WHERE id = '.$locker_id;
+            //here employee_id parameter is used as comment dont confuse 
+            $query = 'UPDATE locker SET status = "'.$state.'", status_changed_time= "'.date('Y-m-d H:i:s',time()).'",status_changed_by = "'.$user.'", comment = "'.addslashes($employee_id).'" WHERE id = '.$locker_id;
             $query = $this->db->query($query);
             if(!$query) return false;
         

@@ -59,7 +59,11 @@ class Locker extends CI_Controller
                 $data['data_tables'] = array('owner_history_table');
                 if(isset($_POST['state']))
                 {
-                    $result = $this->Locker_model->change_locker_state($_POST['state'], $locker_id, $_SESSION['user']['username']);
+                    if($_POST['state'] == 'broken')
+                        //here employee_id parameter is used as comment dont confuse 
+                       $result = $this->Locker_model->change_locker_state($_POST['state'], $locker_id, $_SESSION['user']['username'], $_POST['comment']);
+                    else 
+                        $result = $this->Locker_model->change_locker_state($_POST['state'], $locker_id, $_SESSION['user']['username']);
                     if($result == true)
                     {
                         $data['success'] = "Successfully changed the locker status";
