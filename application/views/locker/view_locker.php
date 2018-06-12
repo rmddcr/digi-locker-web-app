@@ -50,7 +50,7 @@
 		  	</p>
 		  	<br>
 			  	<p>
-			  		<strong>Comment : </strong> <?php if(isset($locker->comment)) echo  $locker->comment; else echo "No comment"; ?>
+			  		<strong>Comment : </strong> <?php if(isset($locker->comment) && $locker->status == 'broken') echo  $locker->comment; else echo "No comment"; ?>
 			  	</p>
 		</div>
 	</div>
