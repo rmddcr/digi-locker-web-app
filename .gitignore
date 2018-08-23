@@ -1,7 +1,5 @@
-
-
-
-
 application/config/config\.php
-
 application/config/database\.php
+application/config/sessions/
+
+\.DS_Store
