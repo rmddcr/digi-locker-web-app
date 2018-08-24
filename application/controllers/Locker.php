@@ -1,9 +1,37 @@
 <?php
+/**
+ * @version v1.0.0
+ * @author Pasindu Perera <pasindubawantha@gmail.com>
+ * @filesource application/controllers/Locker.php
+ */
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Renders all Locker related pages
+ * 
+ * pages :
+ * - void index(): list all lockers
+ * - void view(integer $locker_id) renders details of one locker
+ * - void assign(integer $locker_id) form to assign locker to an employee
+ * - void new_locker() form to add new locker
+ * - void remove_locker() form to confirm and remove locker
+ * 
+ * dependancies :
+ * - Locker_model
+ * - Employee_model
+ * 
+ * @version v1.0.0
+ */
 class Locker extends CI_Controller
 {
-
+    /**
+     * Dependacies are injected to Locker class
+     * 
+     * Dependancies injected :
+     * - Locker_model
+     * - Employee_model
+     */
     public function __construct()
     {
         parent::__construct();
@@ -12,7 +40,13 @@ class Locker extends CI_Controller
 
     }
 
-    //list all lockers
+    /**
+     * Renders list of lockers
+     * 
+     * Renders a list of lockers that can be filtered. Contains a form to filter lockers
+     *
+     * @return void
+     */
     public function index()
     {
         if(isset($_SESSION['user']))
@@ -46,6 +80,14 @@ class Locker extends CI_Controller
         }
     }
 
+    /**
+     * View a single locker details
+     * 
+     * Renders locker owner details and alocation histroy with locker status
+     *
+     * @param integer $locker_id
+     * @return void
+     */
     public function view($locker_id)
     {
         if(isset($_SESSION['user']))
@@ -88,6 +130,12 @@ class Locker extends CI_Controller
         }
     }
 
+    /**
+     * Form to assign an employee to a single locker
+     *
+     * @param integer $locker_id
+     * @return void
+     */
     public function assign($locker_id)
     {
         if(isset($_SESSION['user']))
@@ -127,6 +175,11 @@ class Locker extends CI_Controller
         }
     }
 
+    /**
+     * Form to add new locker
+     *
+     * @return void
+     */
     public function new_locker()
     {
         if(isset($_SESSION['user']))
@@ -160,6 +213,11 @@ class Locker extends CI_Controller
         }
     }
 
+    /**
+     * Form to confirm and remove a locker from a list of lockers
+     *
+     * @return void
+     */
     public function remove_locker()
     {
         if(isset($_SESSION['user']))

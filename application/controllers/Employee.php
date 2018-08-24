@@ -1,9 +1,40 @@
 <?php
+/**
+ * @version v1.0.0
+ * @author Pasindu Perera <pasindubawantha@gmail.com>
+ * @filesource application/controllers/Employee.php
+ */
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Renders pages related to Employee
+ * 
+ * pages : 
+ * - void index(): list all employees
+ * - void view(integer $employee_id): view a single employee
+ * - void new_employee(): add new employee form
+ * - void assign_locker(integer $employee_id): assigning a locker to employee form
+ * - void edit(integer $employee_id): edit single employees detials form
+ * - void delete(integer $employee_id): delete an employee form
+ * - void remove_employee_csv(): delete multiple employees form
+ * - void picture(integer $employee_id): render picture of an employee from dataase BLOB
+ * 
+ * dependancies :
+ * - Employee_model
+ * - Locker_model
+ * 
+ * @version v1.0.0
+ */
 class Employee extends CI_Controller
 {
-
+    /**
+     * Dependacies are injected to Employee class
+     * 
+     * Dependancies injected : 
+     * - Employee_model
+     * - Locker_model 
+     */
     public function __construct()
     {
         parent::__construct();
@@ -11,7 +42,13 @@ class Employee extends CI_Controller
         $this->load->model('Locker_model');
     }
 
-    //list all employees
+    /**
+     * Renders list of employees
+     * 
+     * Rendered list of employees can be filtered. Contains a form to filter employees
+     *
+     * @return void
+     */
     public function index()
     {
         if(isset($_SESSION['user']))
@@ -48,8 +85,12 @@ class Employee extends CI_Controller
         }
     }
 
-
-    //view employee details
+    /**
+     * View a single employees details
+     * 
+     * @param integer $employee_id
+     * @return void
+     */
     public function view($employee_id)
     {
 
@@ -75,7 +116,12 @@ class Employee extends CI_Controller
             redirect('login');
         }
     }
-    //add new employee to the system
+
+    /**
+     * Form to add new employee
+     *
+     * @return void
+     */
     public function new_employee()
     {
         if(isset($_SESSION['user']))
@@ -112,6 +158,12 @@ class Employee extends CI_Controller
         }
     }
 
+    /**
+     * Form ro assign a locker to an employee
+     *
+     * @param integer $employee_id
+     * @return void
+     */
     public function assign_locker($employee_id)
     {
         if(isset($_SESSION['user']))
@@ -154,6 +206,12 @@ class Employee extends CI_Controller
         }
     }
 
+    /**
+     * Form to edit employee
+     *
+     * @param integer $employee_id
+     * @return void
+     */
     public function edit($employee_id)
     {
         if(isset($_SESSION['user']))
@@ -191,6 +249,12 @@ class Employee extends CI_Controller
         }
     }
 
+    /**
+     * Form to confime and delete an employee
+     *
+     * @param integer $employee_id
+     * @return void
+     */
     public function delete($employee_id)
     {
         if(isset($_SESSION['user']))
@@ -227,7 +291,13 @@ class Employee extends CI_Controller
         }
     }
 
-    //remive employee as a list
+    /**
+     * Form to remove multimple employees
+     * 
+     * Form to upload a CVS(Comma Sepearated Value) file with employee EPF numbers to be romoved
+     *
+     * @return void
+     */
     public function remove_employee_csv()
     {
         if(isset($_SESSION['user']))
@@ -268,6 +338,14 @@ class Employee extends CI_Controller
         }
     }
 
+    /**
+     * Renders an image from database BLOB object
+     *
+     * used to render employee profile picture
+     * 
+     * @param integer $employee_id
+     * @return void
+     */
     public function picture($employee_id)
     {
         $image = $this->Employee_model->get_image($employee_id);

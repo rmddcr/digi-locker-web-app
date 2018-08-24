@@ -1,22 +1,23 @@
-# Digi Locker Web Application Users Manual 
-*for all instructions below replace digilocker.ml with your custom domain name used to host Digi Locker web application
-## For All Users
+shifted to ./user_manual/index.md
 
-### Sign-Up with Digi Locker
+to build the site
 
-### Sign-In with Digi Locker
+get [jekyll](https://jekyllrb.com/)
 
-### Request password reset
+```
 
-## Enterer User
+gem install bundler jekyll
+```
 
-### Add new employee
 
-### Assign an employee a locker
+run
+```
 
-### Change state of a locker(Broken or Assigned or Available)
+cd user_manual
 
-## Manager User
+bundle install
 
-*Please refer Enterer Users Section to perform functions that are authorised for the Enterer User 
-## Administrator User
+jekyll serve --watch
+```
+
+visit ``localhost:4000`` to check the manual as you edit ./user_manual/index.md

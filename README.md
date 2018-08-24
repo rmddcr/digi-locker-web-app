@@ -58,7 +58,11 @@ Give examples
 ```
 
 
+## generating code documentation
 
+```
+php phpDocumentor.phar -d . -t docs/api
+```
 
 ## Authors
 
